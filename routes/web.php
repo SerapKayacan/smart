@@ -21,33 +21,36 @@ use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\WebhookGitHub;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('')->group(function () {
+// Frontend routes — blocked by coming soon page when COMING_SOON=true
+Route::middleware(['coming.soon'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-});
 
-Route::prefix('hizmet-kategorileri')->group(function () {
-    Route::get('/', [ServicesCategoryController::class, 'index'])->name('services-category.index');
+    Route::prefix('hizmet-kategorileri')->group(function () {
+        Route::get('/', [ServicesCategoryController::class, 'index'])->name('services-category.index');
+    });
 
-});
+    Route::prefix('hizmetler')->group(function () {
+        Route::get('/{slug}', [ServicesController::class, 'showByCategory'])->name('services.byCategory');
+    });
 
-Route::prefix('hizmetler')->group(function () {
-    Route::get('/{slug}', [ServicesController::class, 'showByCategory'])->name('services.byCategory');
-});
+    Route::prefix('online-doktor')->group(function () {
+        Route::get('/', [OnlineDoctorController::class, 'showByCategory'])->name('onlineDoctor.byCategory');
+    });
 
-Route::prefix('online-doktor')->group(function () {
-    Route::get('/', [OnlineDoctorController::class, 'showByCategory'])->name('onlineDoctor.byCategory');
-});
+    Route::prefix('hizmet-detayi')->group(function () {
+        Route::get('/{slug}', [ServicesDetailController::class, 'show'])->name('services-detail.show');
+    });
 
-Route::prefix('hizmet-detayi')->group(function () {
-    Route::get('/{slug}', [ServicesDetailController::class, 'show'])->name('services-detail.show');
-});
+    Route::prefix('iletisim')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+        Route::post('/gonder', [ContactController::class, 'submit'])->name('contact.submit');
+    });
 
-Route::prefix('iletisim')->group(function () {
-    Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-    Route::post('/gonder', [ContactController::class, 'submit'])->name('contact.submit');
-});
-Route::prefix('hakkimizda')->group(function () {
-    Route::get('/', [AboutUsController::class, 'index'])->name('about-us.index');
+    Route::prefix('hakkimizda')->group(function () {
+        Route::get('/', [AboutUsController::class, 'index'])->name('about-us.index');
+    });
+
+    Route::get('/ara', [SearchController::class, 'search'])->name('search');
 });
 
 Route::prefix('carousel')->group(function () {
@@ -58,6 +61,7 @@ Route::prefix('carousel')->group(function () {
     Route::put('/duzenle/{id}', [CarouselController::class, 'update'])->name('carousel.update');
     Route::delete('/sil/{id}', [CarouselController::class, 'destroy'])->name('carousel.destroy');
 });
+
 Route::prefix('tab-panel')->group(function () {
     Route::get('/', [TabPanelController::class, 'index'])->name('tab-panel.index');
     Route::get('/yeni', [TabPanelController::class, 'create'])->name('tab-panel.create');
@@ -66,11 +70,6 @@ Route::prefix('tab-panel')->group(function () {
     Route::put('/duzenle/{id}', [TabPanelController::class, 'update'])->name('tab-panel.update');
     Route::delete('/sil/{id}', [TabPanelController::class, 'destroy'])->name('tab-panel.destroy');
 });
-
-
-
-Route::get('/ara', [SearchController::class, 'search'])->name('search');
-
 
 Route::prefix('auth')->group(function () {
     Route::get('/', [AuthController::class, 'loginPage'])->middleware('guest')->name('loginPage');
