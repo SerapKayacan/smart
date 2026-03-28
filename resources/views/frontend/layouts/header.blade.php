@@ -146,7 +146,10 @@
                
 
                <div class="nav-item dropdown">
-                    <a href="{{ route('services-category.index') }}" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown">HİZMETLERİMİZ</a>
+                    <a href="{{ route('services-category.index') }}" class="nav-link {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}">HİZMETLERİMİZ</a>
+                    <button class="btn p-0 nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
                     <div class="dropdown-menu fade-up m-0">
                         @if(!empty($serviceCategories))
                         @foreach ($serviceCategories as $serviceCategory)
