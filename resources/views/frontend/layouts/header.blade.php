@@ -146,10 +146,7 @@
                
 
                <div class="nav-item dropdown">
-                    <a href="{{ route('services-category.index') }}" class="nav-link {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}">HİZMETLERİMİZ</a>
-                    <button class="btn p-0 nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
+                    <a href="{{ route('services-category.index') }}" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown">HİZMETLERİMİZ</a>
                     <div class="dropdown-menu fade-up m-0">
                         @if(!empty($serviceCategories))
                         @foreach ($serviceCategories as $serviceCategory)
@@ -166,4 +163,24 @@
             <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
-    <!-- Navbar End --> 
+    <!-- Navbar End -->
+    <script>
+        // Fix Bootstrap dropdown on mobile — show on first tap
+        document.querySelectorAll('.nav-item.dropdown').forEach(function(item) {
+            var toggle = item.querySelector('[data-bs-toggle="dropdown"]');
+            var menu = item.querySelector('.dropdown-menu');
+            if (!toggle || !menu) return;
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                var isOpen = menu.classList.contains('show');
+                // close all others
+                document.querySelectorAll('.dropdown-menu.show').forEach(function(m) { m.classList.remove('show'); });
+                if (!isOpen) menu.classList.add('show');
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item.dropdown')) {
+                document.querySelectorAll('.dropdown-menu.show').forEach(function(m) { m.classList.remove('show'); });
+            }
+        });
+    </script>
