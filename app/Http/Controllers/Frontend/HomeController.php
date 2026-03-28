@@ -19,11 +19,10 @@ class HomeController extends Controller
         $types = ServiceCategory::types();
         $services = Service::where('is_active', true)->orderBy('sort_order','ASC')->get();
 
-        SEOTools::setTitle('Anasayfa'); // Dinamik olacak şekilde ayalanacak
-        SEOTools::setDescription('Özel Sultan Evde Sağlık Hizmetleri'); // Dinamik olacak şekilde ayalanacak
-        SEOTools::opengraph()->addProperty('type', 'website'); // Hizmet detay sayfasında type article olarak güncellenecek
-        SEOTools::metatags()->setKeywords(['doktor randevu', 'telemedicine']); // Dinamik olacak şekilde ayalanacak
-        SEOTools::addImages('https://sultanevdesaglikhizmetleri.com/wp-content/uploads/2021/10/cropped-sultan-logo-1536x288.png'); // Dinamik olacak şekilde ayalanacak
+        SEOTools::setTitle('Ana Sayfa');
+        SEOTools::setDescription('Smart Grup olarak İstanbul\'da profesyonel özel güvenlik ve temizlik hizmetleri sunuyoruz. Sertifikalı personel, 7/24 kesintisiz hizmet.');
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::metatags()->setKeywords(['özel güvenlik', 'güvenlik hizmetleri', 'temizlik hizmetleri', 'smart grup', 'istanbul güvenlik']);
 
         return view('frontend.home', [
             "serviceCategories" => $serviceCategories,

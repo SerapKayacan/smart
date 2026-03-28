@@ -1,56 +1,71 @@
 @extends('frontend.layouts.master')
 @section('content')
-    <main>
-        <div class="row px-4" style="background-color:#dbf4f4">
-            <div class="col-12 text-center py-4 ms-20 d-flex flex-column align-items-center">
-                <p class="services-search-text" style="color:#107171;">Sağlığı Eve Getiriyoruz
-                </p>
-                <form action="{{ route('search') }}" method="GET" class="search-bar justify-content-center mx-3"
-                      role="search" id="form">
-                    <input class="search-bar-input" type="search" name="query"
-                           placeholder="evde serum..."
-                           aria-label="Search through site content">
-                    <button class="search-bar-button px-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.5em" color=" #6E4EEF"
-                             viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"
-                             class=""><title>search</title>
-                            <path
-                                d="M23.031 23.033c0.536-0.536 1.404-0.536 1.939 0l6.626 6.626c0.536 0.536 0.536 1.404 0 1.939s-1.404 0.536-1.94 0l-6.626-6.626c-0.536-0.536-0.536-1.404 0-1.939z"></path>
-                            <path
-                                d="M0.001 14.628c0.001-8.079 6.55-14.628 14.628-14.628 0 0 0 0 0 0 8.079 0 14.628 6.549 14.628 14.628s-6.549 14.628-14.628 14.628c-8.078 0-14.627-6.548-14.628-14.626zM2.744 14.628c0 6.564 5.321 11.886 11.886 11.886s11.886-5.321 11.886-11.886c0-6.564-5.321-11.886-11.886-11.886s-11.885 5.322-11.886 11.886z"></path>
-                        </svg>
-                    </button>
-                </form>
+
+    <!-- Page Header Start -->
+    <div class="container-fluid mb-5 position-relative overflow-hidden" style="height:320px;">
+        <!-- Background image -->
+        <img src="{{ asset('assets/frontend/img/services-page.jpeg') }}"
+                 class="position-absolute top-0 start-0 w-100 h-100" style="object-fit:cover;">
+        <!-- Overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background:linear-gradient(135deg,rgba(11,33,84,0.88),rgba(26,58,122,0.75));"></div>
+        <!-- Content -->
+        <div class="position-relative h-100 d-flex align-items-center justify-content-center">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-white text-uppercase mb-3" style="letter-spacing:2px;">// Hizmetlerimiz //</h6>
+                <h1 class="text-white mb-2">{{ $serviceCategory->title }}</h1>
+                <p class="text-white-50 mb-0">{{ strip_tags($serviceCategory->category_page_detail) }}</p>
             </div>
         </div>
-        <div class="container main-container-services-1 ">
-            @if (isset($serviceCategory))
-                <div class="row py-3 ">
-                    @foreach ($services as $service)
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-4">
-                            <div class="card card-services-detail">
-                                <img src="{{ $service->getFirstMediaUrl('banner', 'large') }}" alt="Service image"
-                                     class="card-service-detail-image">
-                                <div
-                                    class="card-image-text-box"> {{ $types[$service->getCategory->type] ?? 'Unknown Type' }}</div>
-                                <div class="card-body card-services-detail-body">
-                                    <p class="card-service-detail-header"> {{ $service->title}}</p>
-                                    <p class="card-service-detail-middle-text">{{ $service->category_page_detail }}</p>
-                                    <div style="display:flex;">
-                                        <button class="card-service-detail-button" title="Hizmet Detayını Görüntüleyin."
-                                                onclick="window.location.href='{{ route('services-detail.show', ['slug' => $service->slug]) }}'">
-                                            Devamını Gör
-                                        </button>
-                                    </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Services Grid Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            @php
+                $catColor = str_contains(strtolower($serviceCategory->title), 'temizlik') ? '#D81324' : '#0B2154';
+                $catShadow = str_contains(strtolower($serviceCategory->title), 'temizlik') ? 'rgba(216,19,36,0.1)' : 'rgba(11,33,84,0.1)';
+            @endphp
+            @if($services->where('is_active', true)->count() > 0)
+            <div class="row g-4">
+                @foreach($services->where('is_active', true) as $i => $service)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px {{ $catShadow }};border:3px solid {{ $catColor }};">
+                        <!-- Image -->
+                        <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;position:relative;">
+                            @if($service->hasMedia('banner'))
+                                <img src="{{ $service->getFirstMediaUrl('banner','large') }}"
+                                     class="w-100 h-100" style="object-fit:cover;" alt="{{ $service->title }}">
+                            @else
+                                <div class="w-100 h-100 d-flex align-items-center justify-content-center"
+                                     style="background:rgba(11,33,84,0.08);">
+                                    <i class="fa fa-shield-alt fa-4x" style="color:#0B2154;opacity:0.2;"></i>
                                 </div>
-                            </div>
+                            @endif
                         </div>
-                    @endforeach
+                        <!-- Body -->
+                        <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
+                            <h5 class="fw-bold mb-3" style="color:{{ $catColor }};">{{ $service->title }}</h5>
+                            <p class="text-muted mb-4" style="font-size:0.88rem;line-height:1.7;">{{ Str::limit(strip_tags($service->category_page_detail), 110) }}</p>
+                            <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:{{ $catColor }};border-radius:8px;font-size:0.85rem;">
+                                Detayları Gör <i class="fa fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                @endforeach
+            </div>
             @else
-                <p>No category or services found.</p>
+                <div class="text-center py-5">
+                    <i class="fa fa-info-circle fa-3x text-muted mb-3 d-block"></i>
+                    <p class="text-muted">Bu kategoride henüz hizmet bulunmamaktadır.</p>
+                </div>
             @endif
         </div>
+    </div>
+    <!-- Services Grid End -->
 
-    </main>
+   
+
 @endsection

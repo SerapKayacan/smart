@@ -1,92 +1,185 @@
 @extends('frontend.layouts.master')
 @section('content')
-    <main>
-        <div class="row px-4" style="background-color:#dbf4f4">
-            <div class="col-12 text-center py-4 ms-20 d-flex flex-column align-items-center">
-                <p class="services-search-text" style="color:#107171;">Sağlığı Eve Getiriyoruz
-                </p>
-                <form action="{{ route('search') }}" method="GET" class="search-bar justify-content-center mx-3"
-                      role="search" id="form">
-                    <input class="search-bar-input" type="search" name="query"
-                           placeholder="evde serum..."
-                           aria-label="Search through site content">
-                    <button class="search-bar-button px-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.5em" color=" #6E4EEF"
-                             viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false"
-                             class=""><title>search</title>
-                            <path
-                                d="M23.031 23.033c0.536-0.536 1.404-0.536 1.939 0l6.626 6.626c0.536 0.536 0.536 1.404 0 1.939s-1.404 0.536-1.94 0l-6.626-6.626c-0.536-0.536-0.536-1.404 0-1.939z"></path>
-                            <path
-                                d="M0.001 14.628c0.001-8.079 6.55-14.628 14.628-14.628 0 0 0 0 0 0 8.079 0 14.628 6.549 14.628 14.628s-6.549 14.628-14.628 14.628c-8.078 0-14.627-6.548-14.628-14.626zM2.744 14.628c0 6.564 5.321 11.886 11.886 11.886s11.886-5.321 11.886-11.886c0-6.564-5.321-11.886-11.886-11.886s-11.885 5.322-11.886 11.886z"></path>
-                        </svg>
-                    </button>
-                </form>
+
+    <!-- Page Header Start -->
+    <div class="container-fluid py-5 mb-5" style="background: linear-gradient(135deg, #0B2154, #1a3a7a);">
+        <div class="container py-3">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-white text-uppercase mb-3">// Hizmetlerimiz //</h6>
+                <h1 class="text-white mb-2">Güvenlik & Temizlik Hizmetleri</h1>
+                <p class="text-white-50 mb-0">Profesyonel ekibimizle sunduğumuz tüm hizmetleri keşfedin</p>
             </div>
         </div>
-        <div class="main-wrapper-services-1" style="margin-top:40px;margin-bottom:40px;">
-            <div class="container main-container-services-1">
-                <div class="row">
-                    @foreach ($serviceCategories as $serviceCategory)
-                    <div class="col-lg-4  col-md-6 col-sm-12 col-xs-12">
-                        <div class="card card-services">
-                            <div class="card-header card-services-header" style="">
-                                @php
-                                    $icon_colors = ['icon-turquoise', 'icon-yellow', 'icon-purple', 'icon-blue',  'icon-pink','icon-green', ];
-                                @endphp
-                                <div class="icon-box-services {{ $icon_colors[($serviceCategory->sort_order  ) % count( $icon_colors)] }}"> {!! $serviceCategory->icon !!}</div>
-                                <div class="card-top-text">{{ $serviceCategory->title }}</div>
-                                <div class="card-middle-text">{!! $serviceCategory->category_page_detail !!}
-                                </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Security Categories Start -->
+    @php
+        $securityCategories = $serviceCategories->filter(fn($c) => $c->type === 'security' || str_contains(strtolower($c->title), 'güvenlik'));
+        $cleaningCategories = $serviceCategories->filter(fn($c) => $c->type === 'cleaning' || str_contains(strtolower($c->title), 'temizlik'));
+        $otherCategories = $serviceCategories->filter(fn($c) =>
+            !str_contains(strtolower($c->title), 'güvenlik') &&
+            !str_contains(strtolower($c->title), 'temizlik') &&
+            $c->type !== 'security' &&
+            $c->type !== 'cleaning'
+        );
+    @endphp
+
+    @if($securityCategories->count() > 0)
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="d-flex align-items-center gap-3 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div style="width:5px;height:50px;background:#0B2154;border-radius:3px;"></div>
+                <div>
+                    <h6 class="text-uppercase mb-1" style="color:#0B2154;letter-spacing:2px;font-size:0.8rem;">// Güvenlik //</h6>
+                    <h2 class="mb-0">Güvenlik Hizmetleri</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                @foreach($securityCategories as $i => $serviceCategory)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(11,33,84,0.12);border:3px solid #0B2154;">
+                        @if($serviceCategory->hasMedia('banner'))
+                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
+                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
                             </div>
-                            <div class="card-body card-services-body">
-                                <div class="button-header">
-                                    <p>Hizmetler</p>
-                                </div>
-                                <hr class="card-link-line-services">
-                                @if ($serviceCategory->services->isNotEmpty())
-                                <ul class="card-link" style="list-style-type: none;">
-                                    @foreach ($serviceCategory->services->take(3) as $service)
-                                    <li style="list-style: none">
-                                        @if($service['is_active'])
-                                        <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" title="Hizmet Detayını Görüntüle." style="display:flex;text-decoration: none;">
-                                            <p class="card-link-text-services"> {{ $service->title }}</p>
-                                            <i class="bi bi-caret-right card-link-icon-services">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="1em"
-                                                     viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"
-                                                     focusable="false" class=""><title>arrow_forward_ios</title>
-                                                    <path
-                                                        d="M9.42 32l-2.84-2.84 13.16-13.16-13.16-13.16 2.84-2.84 16 16-16 16z"></path>
-                                                </svg>
-                                            </i>
-                                        </a>
-                                            @endif
-                                    </li>
-                                        <hr class="card-link-line-services">
-                                    @endforeach
-                                </ul>
-                                @else
-                                    <p>No services available for this category.</p>
-                                @endif
-                                    <div style="display:flex;">
-                                        <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}" title="Hizmetleri Görüntüle."
-                                           style="display:flex;text-decoration:none;">
-                                            <p class="card-link-bottom-text">Daha Fazlası</p>
-                                            <i class="bi bi-arrow-right card-link-bottom-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="0.90em"
-                                                     viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"
-                                                     focusable="false" class="">
-                                                    <path
-                                                        d="M24.35 18h-24.35v-4h24.35l-11.2-11.2 2.85-2.8 16 16-16 16-2.85-2.8 11.2-11.2z"></path>
-                                                </svg>
-                                            </i>
-                                        </a>
-                                    </div>
+                        @else
+                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(11,33,84,0.08);border-radius:14px 14px 0 0;">
+                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
                             </div>
+                        @endif
+                        <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
+                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $serviceCategory->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
+                            @if($serviceCategory->services->isNotEmpty())
+                            <ul class="list-unstyled mb-3">
+                                @foreach($serviceCategory->services->where('is_active', true)->take(3) as $service)
+                                <li class="mb-1">
+                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" class="text-decoration-none d-flex align-items-center gap-2" style="color:#555;font-size:0.85rem;">
+                                        <i class="fa fa-chevron-right" style="color:#0B2154;font-size:0.7rem;"></i>
+                                        {{ $service->title }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:6px;font-size:0.85rem;">
+                                Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
+                            </a>
                         </div>
                     </div>
-                    @endforeach
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- Divider -->
+    @if($securityCategories->count() > 0 && $cleaningCategories->count() > 0)
+    <div style="height:4px;background:linear-gradient(90deg,#0B2154,#D81324);"></div>
+    @endif
+
+    @if($cleaningCategories->count() > 0)
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="d-flex align-items-center gap-3 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div style="width:5px;height:50px;background:#D81324;border-radius:3px;"></div>
+                <div>
+                    <h6 class="text-uppercase mb-1" style="color:#D81324;letter-spacing:2px;font-size:0.8rem;">// Temizlik //</h6>
+                    <h2 class="mb-0">Temizlik Hizmetleri</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                @foreach($cleaningCategories as $i => $serviceCategory)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(216,19,36,0.12);border:3px solid #D81324;">
+                        @if($serviceCategory->hasMedia('banner'))
+                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
+                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
+                            </div>
+                        @else
+                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(216,19,36,0.08);border-radius:14px 14px 0 0;">
+                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
+                            </div>
+                        @endif
+                        <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
+                            <h5 class="fw-bold mb-2" style="color:#D81324;">{{ $serviceCategory->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
+                            @if($serviceCategory->services->isNotEmpty())
+                            <ul class="list-unstyled mb-3">
+                                @foreach($serviceCategory->services->where('is_active', true)->take(3) as $service)
+                                <li class="mb-1">
+                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" class="text-decoration-none d-flex align-items-center gap-2" style="color:#555;font-size:0.85rem;">
+                                        <i class="fa fa-chevron-right" style="color:#D81324;font-size:0.7rem;"></i>
+                                        {{ $service->title }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#D81324;border-radius:6px;font-size:0.85rem;">
+                                Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
+    @if($otherCategories->count() > 0)
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                @foreach($otherCategories as $i => $serviceCategory)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);border:3px solid #0B2154;">
+                        @if($serviceCategory->hasMedia('banner'))
+                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
+                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
+                            </div>
+                        @else
+                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:#f8f9fa;border-radius:14px 14px 0 0;">
+                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
+                            </div>
+                        @endif
+                        <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
+                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $serviceCategory->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
+                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:6px;font-size:0.85rem;">
+                                Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- CTA Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="background:#0B2154;">
+        <div class="container">
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-8 py-3">
+                    <h2 class="text-white mb-2">Hizmetlerimiz Hakkında Bilgi Alın</h2>
+                    <p class="mb-0" style="color:rgba(255,255,255,0.7);">Size özel teklif ve detaylı bilgi için bizimle iletişime geçin.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ route('contact.index') }}" class="btn btn-primary py-3 px-5">
+                        Bize Ulaşın <i class="fa fa-arrow-right ms-3"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+    <!-- CTA End -->
+
 @endsection

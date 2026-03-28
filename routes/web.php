@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ReferenceController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -10,15 +11,14 @@ use App\Http\Controllers\Admin\CKEditorController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ServicesCategoryController;
 use App\Http\Controllers\Frontend\ServicesController;
-use App\Http\Controllers\Frontend\OnlineDoctorController;
 use App\Http\Controllers\Frontend\ServicesDetailController;
-use App\Http\Controllers\Frontend\OnlineDoctorDetailController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\TabPanelController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\WebhookGitHub;
+use App\Http\Controllers\Frontend\ReferencesController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend routes — blocked by coming soon page when COMING_SOON=true
@@ -33,10 +33,6 @@ Route::middleware(['coming.soon'])->group(function () {
         Route::get('/{slug}', [ServicesController::class, 'showByCategory'])->name('services.byCategory');
     });
 
-    Route::prefix('online-doktor')->group(function () {
-        Route::get('/', [OnlineDoctorController::class, 'showByCategory'])->name('onlineDoctor.byCategory');
-    });
-
     Route::prefix('hizmet-detayi')->group(function () {
         Route::get('/{slug}', [ServicesDetailController::class, 'show'])->name('services-detail.show');
     });
@@ -49,6 +45,8 @@ Route::middleware(['coming.soon'])->group(function () {
     Route::prefix('hakkimizda')->group(function () {
         Route::get('/', [AboutUsController::class, 'index'])->name('about-us.index');
     });
+
+    Route::get('/references', [ReferencesController::class, 'index'])->name('references.index');
 
     Route::get('/ara', [SearchController::class, 'search'])->name('search');
 });
@@ -116,4 +114,13 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
     });
 
     Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+
+    Route::prefix('referans')->name('reference.')->group(function () {
+        Route::get('/', [ReferenceController::class, 'index'])->name('index');
+        Route::get('/yeni', [ReferenceController::class, 'create'])->name('create');
+        Route::post('/yeni', [ReferenceController::class, 'store'])->name('store');
+        Route::get('/duzenle/{id}', [ReferenceController::class, 'edit'])->name('edit');
+        Route::put('/duzenle/{id}', [ReferenceController::class, 'update'])->name('update');
+        Route::delete('/sil/{id}', [ReferenceController::class, 'destroy'])->name('destroy');
+    });
 });
