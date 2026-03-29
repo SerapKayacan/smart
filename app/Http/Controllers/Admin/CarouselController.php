@@ -34,9 +34,6 @@ class CarouselController extends Controller
         $carousel->sort_order = $request->sort_order;
         $carousel->button_text = $request->button_text;
         $carousel->button_link = $request->button_link;
-        $carousel->background_color = $request->background_color  ;
-        $carousel->text_color = $request->text_color;
-        $carousel->border_color = $request->border_color;
         $carousel->is_active = $request->is_active;
         $carousel->save();
 
@@ -78,9 +75,6 @@ class CarouselController extends Controller
         $carousel->sort_order = $request->sort_order;
         $carousel->button_text = $request->button_text;
         $carousel->button_link = $request->button_link;
-        $carousel->background_color = $request->background_color  ;
-        $carousel->text_color = $request->text_color;
-        $carousel->border_color = $request->border_color;
         $carousel->is_active = $request->is_active;
         $carousel->update();
 

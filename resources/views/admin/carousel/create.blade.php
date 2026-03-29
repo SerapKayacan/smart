@@ -124,41 +124,6 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <label class="required form-label" >Buton Yazısı Rengi</label>
-                                                    <input
-                                                        type="color"
-                                                        class="form-control"
-                                                        name="text_color"
-                                                        value="{{ old('text_color', $carousel->text_color ?? '#000000') }}"
-                                                        required
-                                                    />
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label class="required form-label">Buton Çerçeve Rengi</label>
-                                                    <input
-                                                        type="color"
-                                                        class="form-control"
-                                                        name="border_color"
-                                                        value="{{ old('border_color', $carousel->border_color ?? '#000000') }}"
-                                                        required
-                                                    />
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label class="required form-label">Buton Arka Plan Rengi</label>
-                                                    <input
-                                                        type="color"
-                                                        class="form-control"
-                                                        name="button_border_color"
-                                                        value="{{ old('background_color', $carousel->background_color ?? '#000000') }}"
-                                                        required
-                                                    />
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-3">
                                                     <label class="required form-label">Sıra Sayısı</label>
                                                     <input class="form-control" name="sort_order" type="number" value="1" min="0" max="99"/>
                                                     <div class="text-muted fs-7">Bu alan zorunludur.</div>

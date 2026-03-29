@@ -18,9 +18,6 @@ return new class extends Migration
                 $table->integer('sort_order')->nullable();
                 $table->string('button_text')->nullable();
                 $table->string('button_link')->nullable();
-                $table->string('background_color')->nullable();
-                $table->string('text_color')->nullable();
-                $table->string('border_color')->nullable();
                 $table->boolean('is_active')->default(true);
                 $table->softDeletes();
                 $table->timestamps();
