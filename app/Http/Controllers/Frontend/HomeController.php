@@ -13,10 +13,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $serviceCategories = ServiceCategory::where('is_active', true)->where('is_show_home_page',true)->withCount('services')->orderBy('sort_order','ASC')->get();
+        $serviceCategories = ServiceCategory::where('is_active', true)->withCount('services')->orderBy('sort_order','ASC')->get();
         $carousels = Carousel::where('is_active', true)->orderBy('sort_order','ASC')->get();
         $tabPanels = TabPanel::where('is_active', true)->orderBy('sort_order','ASC')->get();
-        $types = ServiceCategory::types();
         $services = Service::where('is_active', true)->orderBy('sort_order','ASC')->get();
 
         SEOTools::setTitle('Ana Sayfa');
@@ -25,11 +24,10 @@ class HomeController extends Controller
         SEOTools::metatags()->setKeywords(['özel güvenlik', 'güvenlik hizmetleri', 'temizlik hizmetleri', 'smart grup', 'istanbul güvenlik']);
 
         return view('frontend.home', [
-            "serviceCategories" => $serviceCategories,
-            "types" => $types,
-             "carousels"=>$carousels,
-            "tabPanels" => $tabPanels,
-            "services" => $services
+            'serviceCategories' => $serviceCategories,
+            'carousels'         => $carousels,
+            'tabPanels'         => $tabPanels,
+            'services'          => $services,
         ]);
     }
 

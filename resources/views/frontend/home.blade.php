@@ -212,63 +212,54 @@
                 <h6 class="text-primary text-uppercase">// Hizmetlerimiz //</h6>
                 <h1 class="mb-5">Hizmetlerimizi Keşfedin</h1>
             </div>
-            @php
-                $securityCat = $serviceCategories->first(fn($c) => str_contains(strtolower($c->title), 'güvenlik'));
-                $cleaningCat = $serviceCategories->first(fn($c) => str_contains(strtolower($c->title), 'temizlik'));
-                $securitySlug = $securityCat?->slug ?? 'guvenlik-hizmetleri';
-                $cleaningSlug = $cleaningCat?->slug ?? 'temizlik-hizmetleri';
-            @endphp
-            <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-lg-4">
-                    <div class="nav w-100 nav-pills me-4">
-                        <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 active" data-bs-toggle="pill" data-bs-target="#tab-pane-1" type="button" id="btn-security">
-                            <i class="fa fa-shield-alt fa-2x me-3"></i>
-                            <h4 class="m-0">Güvenlik Hizmetleri</h4>
-                        </button>
-                        <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4" data-bs-toggle="pill" data-bs-target="#tab-pane-3" type="button" id="btn-cleaning">
-                            <i class="fa fa-broom fa-2x me-3"></i>
-                            <h4 class="m-0">Temizlik Hizmetleri</h4>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="tab-content w-100">
-                        <div class="tab-pane fade show active" id="tab-pane-1">
-                            <div class="row g-4">
-                                <div class="col-md-6" style="min-height: 350px;">
-                                    <div class="position-relative h-100">
-                                        <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/service-1.jpg') }}" style="object-fit: cover;" alt="Özel Güvenlik">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h3 class="mb-3">15 Yıllık Güvenlik Hizmetleri Deneyimi</h3>
-                                    <p class="mb-4">Profesyonel güvenlik personelimizle işyerinizi, sitenizi ve tesislerinizi 7/24 koruma altına alıyoruz.</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>Sertifikalı Güvenlik Personeli</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>7/24 Kesintisiz Hizmet</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>Modern Güvenlik Sistemleri</p>
-                                    <a href="{{ route('services.byCategory', ['slug' => $securitySlug]) }}" class="btn text-white py-3 px-5 mt-3" style="background:#0B2154;">Devamını Oku<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
+
+            <!-- Tab Buttons Row -->
+            <div class="nav d-flex flex-wrap gap-3 justify-content-center mb-4 wow fadeInUp" data-wow-delay="0.2s" id="service-tab-nav" role="tablist">
+                @foreach($tabPanels as $i => $tab)
+                @php $color = $i % 2 === 0 ? '#0B2154' : '#D81324'; @endphp
+                        <button class="btn d-flex align-items-center gap-2 px-4 py-3 {{ $i === 0 ? 'active' : '' }}"
+                        data-bs-toggle="pill"
+                        data-bs-target="#tab-pane-{{ $tab->id }}"
+                        type="button"
+                        role="tab"
+                        aria-controls="tab-pane-{{ $tab->id }}"
+                        aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                        data-color="{{ $color }}"
+                        style="border:2px solid {{ $color }};border-radius:10px;font-weight:600;color:{{ $i === 0 ? '#fff' : $color }};background:{{ $i === 0 ? $color : 'transparent' }};">
+                    {{ $tab->nav_button_text }}
+                </button>
+                @endforeach
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content wow fadeInUp" data-wow-delay="0.3s">
+                @foreach($tabPanels as $i => $tab)
+                @php $color = $i % 2 === 0 ? '#0B2154' : '#D81324'; @endphp
+                <div class="tab-pane fade {{ $i === 0 ? 'show active' : '' }}" id="tab-pane-{{ $tab->id }}">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5" style="min-height:320px;">
+                            <div class="position-relative h-100" style="min-height:320px;">
+                                @if($tab->hasMedia('banner'))
+                                    <img class="position-absolute img-fluid w-100 h-100" src="{{ $tab->getFirstMediaUrl('banner','large') }}" style="object-fit:cover;border-radius:12px;" alt="{{ $tab->nav_button_text }}">
+                                @else
+                                    <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/service-' . min($i+1, 4) . '.jpg') }}" style="object-fit:cover;border-radius:12px;" alt="{{ $tab->nav_button_text }}">
+                                @endif
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tab-pane-3">
-                            <div class="row g-4">
-                                <div class="col-md-6" style="min-height: 350px;">
-                                    <div class="position-relative h-100">
-                                        <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/service-3.jpg') }}" style="object-fit: cover;" alt="Temizlik Hizmetleri">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h3 class="mb-3">Profesyonel Temizlik Hizmetleri</h3>
-                                    <p class="mb-4">Endüstriyel ve kurumsal temizlik hizmetlerimizle çalışma ortamınızı hijyenik ve düzenli tutuyoruz.</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>Hijyenik Temizlik</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>Uzman Temizlik Ekibi</p>
-                                    <p><i class="fa fa-check text-success me-3"></i>Çevre Dostu Ürünler</p>
-                                    <a href="{{ route('services.byCategory', ['slug' => $cleaningSlug]) }}" class="btn text-white py-3 px-5 mt-3" style="background:#D81324;">Devamını Oku<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
+                        <div class="col-md-7">
+                            <h3 class="mb-3" style="color:{{ $color }};">{!! $tab->title !!}</h3>
+                            <p class="mb-4 text-muted">{!! $tab->description !!}</p>
+                            @if($tab->bullet_1)<p class="mb-2"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_1 }}</p>@endif
+                            @if($tab->bullet_2)<p class="mb-2"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_2 }}</p>@endif
+                            @if($tab->bullet_3)<p class="mb-4"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_3 }}</p>@endif
+                            <a href="{{ $tab->button_link ?? route('services-category.index') }}"
+                               class="btn text-white py-3 px-5" style="background:{{ $color }};border-radius:8px;">
+                                {{ $tab->button_text ?? 'Devamını Oku' }}<i class="fa fa-arrow-right ms-3"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -276,32 +267,23 @@
 
     <script>
         (function () {
-            var btnSecurity = document.getElementById('btn-security');
-            var btnCleaning = document.getElementById('btn-cleaning');
-            var iconSecurity = btnSecurity.querySelector('i');
-            var iconCleaning = btnCleaning.querySelector('i');
-
+            var buttons = document.querySelectorAll('#service-tab-nav [data-color]');
             function setColors() {
-                if (btnSecurity.classList.contains('active')) {
-                    btnSecurity.style.backgroundColor = '#0B2154';
-                    btnSecurity.style.color = '#fff';
-                    iconSecurity.style.color = '#fff';
-                    btnCleaning.style.backgroundColor = '';
-                    btnCleaning.style.color = '';
-                    iconCleaning.style.color = '';
-                } else {
-                    btnCleaning.style.backgroundColor = '#D81324';
-                    btnCleaning.style.color = '#fff';
-                    iconCleaning.style.color = '#fff';
-                    btnSecurity.style.backgroundColor = '';
-                    btnSecurity.style.color = '';
-                    iconSecurity.style.color = '';
-                }
+                buttons.forEach(function(btn) {
+                    var color = btn.getAttribute('data-color');
+                    if (btn.classList.contains('active')) {
+                        btn.style.backgroundColor = color;
+                        btn.style.color = '#fff';
+                    } else {
+                        btn.style.backgroundColor = 'transparent';
+                        btn.style.color = color;
+                    }
+                });
             }
-
             setColors();
-            btnSecurity.addEventListener('click', function () { setTimeout(setColors, 10); });
-            btnCleaning.addEventListener('click', function () { setTimeout(setColors, 10); });
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() { setTimeout(setColors, 10); });
+            });
         })();
     </script>
 

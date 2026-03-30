@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="menu-item">
+               {{--  <div class="menu-item">
                     <a class="menu-link @if(request()->segment(2) === 'randevu') active @endif"
                        href="{{ route('appointment.index') }}">
                         <span class="menu-icon">
@@ -83,7 +83,7 @@
                         </span>
                         <span class="menu-title">Randevu Sistemi</span>
                     </a>
-                </div>
+                </div> --}}
 
                 <div class="menu-item">
                     <a class="menu-link " href="{{ route('carousel.index') }}">

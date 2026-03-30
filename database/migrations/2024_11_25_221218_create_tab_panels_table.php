@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('tab_panels', function (Blueprint $table) {
             $table->id();
-            $table->text('icon')->nullable();
             $table->string('nav_button_text')->nullable();
             $table->text('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('bullet_1')->nullable();
+            $table->string('bullet_2')->nullable();
+            $table->string('bullet_3')->nullable();
             $table->integer('sort_order')->nullable();
             $table->string('button_text')->nullable();
             $table->string('button_link')->nullable();

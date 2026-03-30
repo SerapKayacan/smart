@@ -53,22 +53,7 @@
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <div class="card card-flush pt-5">
                                         <div class="card-body pt-5">
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-6">
-                                                    <label class="required form-label">Tip</label>
-                                                    <select name="type" class="form-control col-sm-4" required>
-                                                        @foreach($types as $key => $type)
-                                                            <option @if($serviceCategory->type == $key) selected @endif value="{{$key}}">{{ $type }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <label class="form-label">Ikon</label>
-                                                    <input class="form-control" name="icon" value="{{ $serviceCategory->icon }}"/>
-                                                    <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
-                                                </div>
-                                            </div>
+                                        
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
                                                     <label class="required form-label">Başlık</label>
@@ -78,41 +63,12 @@
                                             </div>
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
-                                                    <label class="form-label">Anasayfa Açıklama</label>
-                                                    <textarea class="form-control " id="home_page_detail" name="home_page_detail" rows="2">{{ $serviceCategory->home_page_detail }}</textarea>
-                                                    <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-12">
                                                     <label class="form-label">Kategori Sayfası Açıklama</label>
-                                                    <textarea class="form-control " id="category_page_detail" name="category_page_detail" rows="2">{{ $serviceCategory->category_page_detail }}</textarea>
+                                                    <textarea class="form-control " id="description" name="description" rows="2">{{ $serviceCategory->description}}</textarea>
                                                     <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
                                                 </div>
                                             </div>
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Anasayfada Göster</label>
-                                                    <select name="is_show_home_page" class="form-control col-sm-4">
-                                                        <option @if($serviceCategory->is_show_home_page == 1) selected @endif value="1">Evet</option>
-                                                        <option @if($serviceCategory->is_show_home_page == 0) selected @endif value="0">Hayır</option>
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Anasayfada Kolon Sayısı</label>
-                                                    <input class="form-control" name="home_page_colspan" type="number" value="{{ $serviceCategory->home_page_colspan }}" min="1" max="3"/>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Hizmetlerimiz Menüsünde Göster</label>
-                                                    <select name="is_show_service_page" class="form-control col-sm-4" required>
-                                                        <option @if($serviceCategory->is_show_service_page == 1) selected @endif value="1">Evet</option>
-                                                        <option @if($serviceCategory->is_show_service_page == 0) selected @endif value="0">Hayır</option>
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <label class="required form-label">Sıra Sayısı</label>

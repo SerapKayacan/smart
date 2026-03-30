@@ -27,7 +27,6 @@
                     <img src="{{ $service->getFirstMediaUrl('banner','large') }}"
                          class="img-fluid w-100" style="border-radius:16px;" alt="{{ $service->title }}">
                     @endif
-
                     @if($service->sort_detail)
                     <div class="p-4 mt-4" style="background:#f4f6fb;border-radius:12px;border-left:4px solid #0B2154;min-height:150px;">
                         <p class="mb-0" style="color:#333;line-height:1.8;">{!! $service->sort_detail !!}</p>

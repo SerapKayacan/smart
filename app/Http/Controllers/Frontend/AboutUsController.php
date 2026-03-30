@@ -11,7 +11,6 @@ class AboutUsController extends Controller
     public function index()
     {
         $serviceCategories = ServiceCategory::withCount('services')->orderBy('sort_order','ASC')->get();
-        $types = ServiceCategory::types();
 
         SEOTools::setTitle('Hakkımızda - Smart Grup');
         SEOTools::setDescription('Smart Grup hakkında bilgi alın. 11 yılı aşkın deneyimimizle güvenlik ve temizlik sektöründe güvenilir çözümler sunuyoruz.');
@@ -20,7 +19,6 @@ class AboutUsController extends Controller
 
         return view('frontend.about-us', [
             'serviceCategories' => $serviceCategories,
-            'types'             => $types,
         ]);
     }
 }

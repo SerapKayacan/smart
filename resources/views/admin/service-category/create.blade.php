@@ -53,22 +53,7 @@
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <div class="card card-flush pt-5">
                                         <div class="card-body pt-5">
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-6">
-                                                    <label class="required form-label">Tip</label>
-                                                    <select name="type" class="form-control col-sm-4" required>
-                                                        @foreach($types as $key => $type)
-                                                            <option value="{{$key}}">{{ $type }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <label class="form-label">Ikon</label>
-                                                    <input class="form-control" name="icon" value=""/>
-                                                    <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
                                                     <label class="required form-label">Başlık</label>
@@ -78,39 +63,9 @@
                                             </div>
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
-                                                    <label class="form-label">Anasayfa Açıklama</label>
-                                                    <textarea class="form-control" name="home_page_detail" rows="2"></textarea>
+                                                    <label class="form-label">Açıklama</label>
+                                                    <textarea class="form-control" name="description" rows="2"></textarea>
                                                     <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-12">
-                                                    <label class="form-label">Kategori Sayfası Açıklama</label>
-                                                    <textarea class="form-control" name="category_page_detail" rows="2"></textarea>
-                                                    <div class="text-muted fs-7">Bu alan zorunlu değildir.</div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-10 row">
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Anasayfada Göster</label>
-                                                    <select name="is_show_home_page" class="form-control col-sm-4">
-                                                        <option selected value="1">Evet</option>
-                                                        <option value="0">Hayır</option>
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Anasayfada Kolon Sayısı</label>
-                                                    <input class="form-control" name="home_page_colspan" type="number" value="1" min="1" max="3"/>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Hizmetlerimiz Menüsünde Göster</label>
-                                                    <select name="is_show_service_page" class="form-control col-sm-4" required>
-                                                        <option selected value="1">Evet</option>
-                                                        <option value="0">Hayır</option>
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
                                                 </div>
                                             </div>
                                             <div class="row">

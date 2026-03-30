@@ -12,37 +12,23 @@ class ServiceCategoryController extends Controller
 {
     public function index()
     {
-        $serviceCategories = ServiceCategory::withCount('services')->orderBy('sort_order','ASC')->get();
-        $types = ServiceCategory::types();
-        return view('admin.service-category.index', [
-            "serviceCategories" => $serviceCategories,
-            "types" => $types
-        ]);
+        $serviceCategories = ServiceCategory::withCount('services')->orderBy('sort_order', 'ASC')->get();
+        return view('admin.service-category.index', compact('serviceCategories'));
     }
 
     public function create()
     {
-        $types = ServiceCategory::types();
-        return view('admin.service-category.create', [
-            "types" => $types
-        ]);
+        return view('admin.service-category.create');
     }
 
     public function store(Request $request)
     {
         $serviceCategory = new ServiceCategory();
-        $serviceCategory->title = $request->title;
-        $serviceCategory->slug = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
-        $serviceCategory->meta_description = $request->meta_description;
-        $serviceCategory->category_page_detail = $request->category_page_detail;
-        $serviceCategory->home_page_detail = $request->home_page_detail;
-        $serviceCategory->icon = $request->icon;
-        $serviceCategory->type = $request->type;
-        $serviceCategory->sort_order = $request->sort_order;
-        $serviceCategory->is_show_home_page = $request->is_show_home_page;
-        $serviceCategory->is_show_service_page = $request->is_show_service_page;
-        $serviceCategory->home_page_colspan = $request->home_page_colspan;
-        $serviceCategory->is_active = $request->is_active;
+        $serviceCategory->title       = $request->title;
+        $serviceCategory->slug        = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
+        $serviceCategory->description = $request->description;
+        $serviceCategory->sort_order  = $request->sort_order;
+        $serviceCategory->is_active   = $request->is_active;
         $serviceCategory->save();
 
         $tags = json_decode($request->tags, true);
@@ -57,20 +43,14 @@ class ServiceCategoryController extends Controller
         }
         $serviceCategory->tags()->sync($tagIds);
 
-        return redirect()->to(route('service-category.index', $serviceCategory->id));
+        return redirect()->route('service-category.index')->with('success', 'Kategori eklendi.');
     }
 
     public function edit(string $id)
     {
         $serviceCategory = ServiceCategory::findOrFail($id);
-        $types = ServiceCategory::types();
         $tags = $serviceCategory->tags->pluck('name')->toArray();
-
-        return view('admin.service-category.edit', [
-            "serviceCategory" => $serviceCategory,
-            "types" => $types,
-            "tags" => $tags
-        ]);
+        return view('admin.service-category.edit', compact('serviceCategory', 'tags'));
     }
 
     public function update(Request $request, string $id)
@@ -79,17 +59,10 @@ class ServiceCategoryController extends Controller
         if ($serviceCategory->title !== $request->title) {
             $serviceCategory->slug = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
         }
-        $serviceCategory->title = $request->title;
-        $serviceCategory->meta_description = $request->meta_description;
-        $serviceCategory->category_page_detail = $request->category_page_detail;
-        $serviceCategory->home_page_detail = $request->home_page_detail;
-        $serviceCategory->icon = $request->icon;
-        $serviceCategory->type = $request->type;
-        $serviceCategory->sort_order = $request->sort_order;
-        $serviceCategory->is_show_home_page = $request->is_show_home_page;
-        $serviceCategory->is_show_service_page = $request->is_show_service_page;
-        $serviceCategory->home_page_colspan = $request->home_page_colspan;
-        $serviceCategory->is_active = $request->is_active;
+        $serviceCategory->title       = $request->title;
+        $serviceCategory->description = $request->description;
+        $serviceCategory->sort_order  = $request->sort_order;
+        $serviceCategory->is_active   = $request->is_active;
         $serviceCategory->update();
 
         $tags = json_decode($request->tags, true);
@@ -104,16 +77,12 @@ class ServiceCategoryController extends Controller
         }
         $serviceCategory->tags()->sync($tagIds);
 
-        return redirect()->to(route('service-category.index', $serviceCategory->id));
+        return redirect()->route('service-category.index')->with('success', 'Kategori güncellendi.');
     }
 
     public function destroy(string $id)
     {
-        $serviceCategory = ServiceCategory::findOrFail($id)->delete();
-        if ($serviceCategory){
-            return response()->json(['status' => "success",'message' => 'Silme Başarılı!']);
-        } else {
-            return response()->json(['status' => "error",'message' => 'Kayıt Silinemedi!']);
-        }
+        ServiceCategory::findOrFail($id)->delete();
+        return response()->json(['status' => 'success', 'message' => 'Silme Başarılı!']);
     }
 }

@@ -15,15 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
-            $table->text('home_page_detail')->nullable();
-            $table->text('category_page_detail')->nullable();
-            $table->text('icon')->nullable();
-            $table->enum('type', ['online', 'home_office', 'online_or_home_office']);
+            $table->text('description')->nullable();
             $table->integer('sort_order')->nullable();
-            $table->boolean('is_show_home_page')->default(true);
-            $table->boolean('is_show_service_page')->default(true);
-            $table->integer('home_page_colspan')->default(1);
             $table->boolean('is_active')->default(true);
             $table->softDeletes();
             $table->timestamps();

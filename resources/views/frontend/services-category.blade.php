@@ -13,18 +13,16 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- Security Categories Start -->
     @php
-        $securityCategories = $serviceCategories->filter(fn($c) => $c->type === 'security' || str_contains(strtolower($c->title), 'güvenlik'));
-        $cleaningCategories = $serviceCategories->filter(fn($c) => $c->type === 'cleaning' || str_contains(strtolower($c->title), 'temizlik'));
-        $otherCategories = $serviceCategories->filter(fn($c) =>
+        $securityCategories = $serviceCategories->filter(fn($c) => str_contains(strtolower($c->title), 'güvenlik'));
+        $cleaningCategories  = $serviceCategories->filter(fn($c) => str_contains(strtolower($c->title), 'temizlik'));
+        $otherCategories     = $serviceCategories->filter(fn($c) =>
             !str_contains(strtolower($c->title), 'güvenlik') &&
-            !str_contains(strtolower($c->title), 'temizlik') &&
-            $c->type !== 'security' &&
-            $c->type !== 'cleaning'
+            !str_contains(strtolower($c->title), 'temizlik')
         );
     @endphp
 
+    {{-- Security --}}
     @if($securityCategories->count() > 0)
     <div class="container-xxl py-5">
         <div class="container">
@@ -36,26 +34,24 @@
                 </div>
             </div>
             <div class="row g-4">
-                @foreach($securityCategories as $i => $serviceCategory)
+                @foreach($securityCategories as $i => $cat)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
-                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(11,33,84,0.12);border:3px solid #0B2154;">
-                        @if($serviceCategory->hasMedia('banner'))
-                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
-                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
-                            </div>
-                        @else
-                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(11,33,84,0.08);border-radius:14px 14px 0 0;">
-                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
-                            </div>
-                        @endif
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(11,33,84,0.1);border:3px solid #0B2154;">
+                        <!-- Icon area -->
+                        <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(11,33,84,0.06);border-radius:14px 14px 0 0;">
+                            <div style="font-size:3rem;">{!! $cat->icon !!}</div>
+                        </div>
+                        <!-- Body -->
                         <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
-                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $serviceCategory->title }}</h5>
-                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
-                            @if($serviceCategory->services->isNotEmpty())
+                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $cat->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{{ strip_tags($cat->description) }}</p>
+                            @if($cat->services->where('is_active', true)->count() > 0)
                             <ul class="list-unstyled mb-3">
-                                @foreach($serviceCategory->services->where('is_active', true)->take(3) as $service)
+                                @foreach($cat->services->where('is_active', true)->take(3) as $service)
                                 <li class="mb-1">
-                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" class="text-decoration-none d-flex align-items-center gap-2" style="color:#555;font-size:0.85rem;">
+                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}"
+                                       class="text-decoration-none d-flex align-items-center gap-2"
+                                       style="color:#555;font-size:0.85rem;">
                                         <i class="fa fa-chevron-right" style="color:#0B2154;font-size:0.7rem;"></i>
                                         {{ $service->title }}
                                     </a>
@@ -63,8 +59,8 @@
                                 @endforeach
                             </ul>
                             @endif
-                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
-                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:6px;font-size:0.85rem;">
+                            <a href="{{ route('services.byCategory', ['slug' => $cat->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:8px;font-size:0.85rem;">
                                 Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
                             </a>
                         </div>
@@ -76,11 +72,11 @@
     </div>
     @endif
 
-    <!-- Divider -->
     @if($securityCategories->count() > 0 && $cleaningCategories->count() > 0)
     <div style="height:4px;background:linear-gradient(90deg,#0B2154,#D81324);"></div>
     @endif
 
+    {{-- Cleaning --}}
     @if($cleaningCategories->count() > 0)
     <div class="container-xxl py-5">
         <div class="container">
@@ -92,26 +88,22 @@
                 </div>
             </div>
             <div class="row g-4">
-                @foreach($cleaningCategories as $i => $serviceCategory)
+                @foreach($cleaningCategories as $i => $cat)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
-                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(216,19,36,0.12);border:3px solid #D81324;">
-                        @if($serviceCategory->hasMedia('banner'))
-                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
-                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
-                            </div>
-                        @else
-                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(216,19,36,0.08);border-radius:14px 14px 0 0;">
-                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
-                            </div>
-                        @endif
+                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(216,19,36,0.1);border:3px solid #D81324;">
+                        <div class="d-flex align-items-center justify-content-center" style="height:120px;background:rgba(216,19,36,0.06);border-radius:14px 14px 0 0;">
+                            <div style="font-size:3rem;">{!! $cat->icon !!}</div>
+                        </div>
                         <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
-                            <h5 class="fw-bold mb-2" style="color:#D81324;">{{ $serviceCategory->title }}</h5>
-                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
-                            @if($serviceCategory->services->isNotEmpty())
+                            <h5 class="fw-bold mb-2" style="color:#D81324;">{{ $cat->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{{ strip_tags($cat->description) }}</p>
+                            @if($cat->services->where('is_active', true)->count() > 0)
                             <ul class="list-unstyled mb-3">
-                                @foreach($serviceCategory->services->where('is_active', true)->take(3) as $service)
+                                @foreach($cat->services->where('is_active', true)->take(3) as $service)
                                 <li class="mb-1">
-                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" class="text-decoration-none d-flex align-items-center gap-2" style="color:#555;font-size:0.85rem;">
+                                    <a href="{{ route('services-detail.show', ['slug' => $service->slug]) }}"
+                                       class="text-decoration-none d-flex align-items-center gap-2"
+                                       style="color:#555;font-size:0.85rem;">
                                         <i class="fa fa-chevron-right" style="color:#D81324;font-size:0.7rem;"></i>
                                         {{ $service->title }}
                                     </a>
@@ -119,8 +111,8 @@
                                 @endforeach
                             </ul>
                             @endif
-                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
-                               class="btn text-white py-2 px-4" style="background:#D81324;border-radius:6px;font-size:0.85rem;">
+                            <a href="{{ route('services.byCategory', ['slug' => $cat->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#D81324;border-radius:8px;font-size:0.85rem;">
                                 Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
                             </a>
                         </div>
@@ -132,27 +124,22 @@
     </div>
     @endif
 
+    {{-- Other categories --}}
     @if($otherCategories->count() > 0)
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
-                @foreach($otherCategories as $i => $serviceCategory)
+                @foreach($otherCategories as $i => $cat)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
                     <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);border:3px solid #0B2154;">
-                        @if($serviceCategory->hasMedia('banner'))
-                            <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;">
-                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'large') }}" class="w-100 h-100" style="object-fit:cover;" alt="{{ $serviceCategory->title }}">
-                            </div>
-                        @else
-                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:#f8f9fa;border-radius:14px 14px 0 0;">
-                                <div style="font-size:3rem;">{!! $serviceCategory->icon !!}</div>
-                            </div>
-                        @endif
+                        <div class="d-flex align-items-center justify-content-center" style="height:120px;background:#f8f9fa;border-radius:14px 14px 0 0;">
+                            <div style="font-size:3rem;">{!! $cat->icon !!}</div>
+                        </div>
                         <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
-                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $serviceCategory->title }}</h5>
-                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{!! $serviceCategory->category_page_detail !!}</p>
-                            <a href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}"
-                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:6px;font-size:0.85rem;">
+                            <h5 class="fw-bold mb-2" style="color:#0B2154;">{{ $cat->title }}</h5>
+                            <p class="text-muted mb-3" style="font-size:0.88rem;line-height:1.7;">{{ strip_tags($cat->description) }}</p>
+                            <a href="{{ route('services.byCategory', ['slug' => $cat->slug]) }}"
+                               class="btn text-white py-2 px-4" style="background:#0B2154;border-radius:8px;font-size:0.85rem;">
                                 Tümünü Gör <i class="fa fa-arrow-right ms-2"></i>
                             </a>
                         </div>

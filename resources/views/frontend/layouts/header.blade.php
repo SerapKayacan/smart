@@ -146,8 +146,10 @@
                
 
                <div class="nav-item dropdown">
-                    <a href="{{ route('services-category.index') }}" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown">HİZMETLERİMİZ</a>
-                    <div class="dropdown-menu fade-up m-0">
+                    <a href="#" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown" data-bs-display="static">HİZMETLERİMİZ</a>
+                    <div class="dropdown-menu m-0">
+                        <a class="dropdown-item" href="{{ route('services-category.index') }}">Tüm Hizmetler</a>
+                        <div class="dropdown-divider"></div>
                         @if(!empty($serviceCategories))
                         @foreach ($serviceCategories as $serviceCategory)
                             <a class="dropdown-item" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
@@ -156,8 +158,7 @@
                         @endforeach
                         @endif
                     </div>
-                </div>
-                
+                </div>        
                 <a href="{{ route('contact.index') }}" class="nav-item nav-link">İLETİŞİM</a>
             </div>
             <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
