@@ -4,37 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class ServiceCategory extends Model implements HasMedia
+class Partner extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'meta_description',
-        'description',
+        'name',
         'sort_order',
-        'is_active'
+        'is_active',
     ];
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'service_category_tags');
-    }
-
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'category_id');
-    }
-
-
-
 
     public function registerMediaConversions(Media $media = null): void
     {

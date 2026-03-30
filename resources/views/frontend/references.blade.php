@@ -130,32 +130,21 @@
                 <h2 class="mb-0">Bize Güvenen Markalar</h2>
             </div>
             <div class="row g-4 align-items-center justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-                @php
-                $partners = [
-                    ['logo' => 'emlak-konut-logo.png', 'name' => 'Emlak Konut'],
-                    ['logo' => null, 'name' => 'Capacity AVM'],
-                    ['logo' => null, 'name' => 'Teknopark İstanbul'],
-                    ['logo' => null, 'name' => 'Hilton Hotels'],
-                    ['logo' => null, 'name' => 'Forum İstanbul'],
-                    ['logo' => null, 'name' => 'Özel Hastane'],
-                    ['logo' => null, 'name' => 'Restoran Zinciri'],
-                    ['logo' => null, 'name' => 'Kurumsal Ofis'],
-                ];
-                @endphp
+
                 @foreach($partners as $partner)
                 <div class="col-6 col-md-3 col-lg-2">
                     <div class="d-flex align-items-center justify-content-center p-3"
                          style="background:#f8f9fa;border-radius:12px;height:90px;border:1px solid #eee;transition:all 0.3s;"
                          onmouseover="this.style.boxShadow='0 4px 20px rgba(11,33,84,0.15)';this.style.borderColor='#0B2154';"
                          onmouseout="this.style.boxShadow='none';this.style.borderColor='#eee';">
-                        @if($partner['logo'])
-                            <img src="{{ asset('assets/frontend/img/' . $partner['logo']) }}"
-                                 alt="{{ $partner['name'] }}"
+                        @if($partner->hasMedia('image'))
+                            <img src="{{ $partner->getFirstMediaUrl('image', 'thumb') }}"
+                                 alt="{{ $partner->name }}"
                                  style="max-height:60px;max-width:100%;object-fit:contain;filter:grayscale(30%);"
                                  onmouseover="this.style.filter='grayscale(0)'"
                                  onmouseout="this.style.filter='grayscale(30%)'">
                         @else
-                            <span class="fw-semibold text-center" style="color:#0B2154;font-size:0.8rem;line-height:1.4;">{{ $partner['name'] }}</span>
+                            <span class="fw-semibold text-center" style="color:#0B2154;font-size:0.8rem;line-height:1.4;">{{ $partner->name }}</span>
                         @endif
                     </div>
                 </div>

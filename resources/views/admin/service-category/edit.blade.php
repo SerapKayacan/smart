@@ -53,6 +53,27 @@
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <div class="card card-flush pt-5">
                                         <div class="card-body pt-5">
+                                            <div class="mb-10 row">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Görsel</label>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <a class="uploadImage btn btn-primary text-white btn-sm">
+                                                                    <i class="far fa-file-image"></i> Seç
+                                                                </a>
+                                                                <input type="file" accept="image/jpeg,image/png,image/jpg" name="banner_image" class="d-none">
+                                                                <a class="removeImage btn btn-danger text-white btn-sm">
+                                                                    <i class="fa fa-trash"></i> Kaldır
+                                                                </a>
+                                                                <div class="row col-md-12 thumb-output p-2">
+                                                                    <img class="thumb img-thumbnail" src="{{ $serviceCategory->getFirstMediaUrl('banner', 'thumb') }}">
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
@@ -139,6 +160,7 @@
     <script src="{{ asset('') }}assets/dragsort/dragsort.js"></script>
     <script src="{{ asset('') }}assets/plugins/custom/ckeditor/ckeditor.js"></script>
     <script src="{{ asset('') }}assets/js/admin/ckeditor.js"></script>
+    <script src="{{ asset('') }}assets/js/admin/media.js"></script>
     <script>
         var input = document.querySelector('#inputTagify');
         var tagify = new Tagify(input)

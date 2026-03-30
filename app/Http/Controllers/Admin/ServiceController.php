@@ -38,9 +38,6 @@ class ServiceController extends Controller
         $service->detail = $request->detail;
         $service->category_id = $request->category_id;
         $service->sort_order = $request->sort_order;
-        $service->can_be_appointment = $request->can_be_appointment;
-        $service->appointment_start_time = $request->appointment_start_time;
-        $service->appointment_end_time = $request->appointment_end_time;
         $service->is_active = $request->is_active;
         $service->save();
 
@@ -90,9 +87,6 @@ class ServiceController extends Controller
         $service->detail = $request->detail;
         $service->category_id = $request->category_id;
         $service->sort_order = $request->sort_order;
-        $service->can_be_appointment = $request->can_be_appointment;
-        $service->appointment_start_time = $request->appointment_start_time;
-        $service->appointment_end_time = $request->appointment_end_time;
         $service->is_active = $request->is_active;
         $service->update();
 

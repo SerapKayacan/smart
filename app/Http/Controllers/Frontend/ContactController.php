@@ -7,6 +7,7 @@ use App\Models\ServiceCategory;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\HumanResourcesMail;
 
 class ContactController extends Controller
 {
@@ -41,5 +42,38 @@ class ContactController extends Controller
         );
 
         return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi!');
+    }
+
+    public function submitCv(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|max:255',
+            'phone'    => 'required|string|max:50',
+            'position' => 'required|string|max:255',
+            'message'  => 'nullable|string|max:2000',
+            'cv_file'  => 'required|file|mimes:pdf,doc,docx|max:5120', // 5MB max
+        ]);
+
+        $file = $request->file('cv_file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        
+        // Store temporarily in local storage
+        $filePath = $file->storeAs('cv', $fileName, 'local'); 
+        $absolutePath = storage_path('app/cv/' . $fileName);
+
+        $applicationData = [
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'phone'    => $request->phone,
+            'position' => $request->position,
+            'message'  => $request->message,
+        ];
+
+        $hrEmail = env('HR_MAIL_ADDRESS', env('MAIL_TO_ADDRESS'));
+
+        Mail::to($hrEmail)->send(new HumanResourcesMail($applicationData, $absolutePath, $file->getClientOriginalName()));
+
+        return redirect()->back()->with('success', 'Kariyer başvurunuz başarıyla alındı ve İnsan Kaynakları departmanına iletildi!');
     }
 }

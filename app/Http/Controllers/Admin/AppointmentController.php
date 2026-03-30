@@ -20,7 +20,7 @@ class AppointmentController extends Controller
 
     public function index()
     {
-        $services = Service::where('can_be_appointment', true)->where('is_active', true)->orderBy('sort_order','ASC')->get();
+        $services = Service::where('is_active', true)->orderBy('sort_order','ASC')->get();
         return view('admin.appointment.index', [
             "services" => $services
         ]);

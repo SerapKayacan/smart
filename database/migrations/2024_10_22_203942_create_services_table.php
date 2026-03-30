@@ -24,9 +24,6 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('service_categories')->onDelete('cascade');
             $table->integer('sort_order')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->boolean('can_be_appointment')->default(false);
-            $table->time('appointment_start_time')->nullable();
-            $table->time('appointment_end_time')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

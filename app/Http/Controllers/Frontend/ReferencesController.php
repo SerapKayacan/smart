@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reference;
+use App\Models\Partner;
 
 class ReferencesController extends Controller
 {
@@ -19,6 +20,8 @@ class ReferencesController extends Controller
             ->orderBy('sort_order')
             ->get();
 
-        return view('frontend.references', compact('securityReferences', 'cleaningReferences'));
+        $partners = Partner::where('is_active', true)->orderBy('sort_order')->get();
+
+        return view('frontend.references', compact('securityReferences', 'cleaningReferences', 'partners'));
     }
 }

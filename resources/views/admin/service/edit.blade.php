@@ -97,44 +97,7 @@
                                                     </select>
                                                     <div class="text-muted fs-7">Bu alan zorunludur.</div>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <label class="required form-label">Randevulu</label>
-                                                    <select name="can_be_appointment" id="can_be_appointment"
-                                                            class="form-control" required>
-                                                        <option @if ($service->can_be_appointment == 1) selected
-                                                                @endif value="1">Evet
-                                                        </option>
-                                                        <option @if ($service->can_be_appointment == 0) selected
-                                                                @endif value="0">Hayır
-                                                        </option>
-                                                    </select>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
-                                                <div class="col-sm-4" style="display: none;" id="appointment_times">
-                                                    <label class="required form-label">Randevu Başlangıç / Bitiş
-                                                        Saatleri</label>
-                                                    <div class="d-flex">
-                                                        <select class="form-control me-2" id="appointment_start_time"
-                                                                name="appointment_start_time">
-                                                            @foreach (range(0, 23) as $hour)
-                                                                <option value="{{ sprintf('%02d:00', $hour) }}"
-                                                                        @if(\Carbon\Carbon::parse($service->appointment_start_time)->format('H:i') == sprintf('%02d:00', $hour)) selected @endif>{{ sprintf('%02d:00', $hour) }}</option>
-                                                                <option value="{{ sprintf('%02d:30', $hour) }}"
-                                                                        @if(\Carbon\Carbon::parse($service->appointment_start_time)->format('H:i') == sprintf('%02d:30', $hour)) selected @endif>{{ sprintf('%02d:30', $hour) }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <select class="form-control" id="appointment_end_time"
-                                                                name="appointment_end_time">
-                                                            @foreach (range(0, 23) as $hour)
-                                                                <option value="{{ sprintf('%02d:00', $hour) }}"
-                                                                        @if(\Carbon\Carbon::parse($service->appointment_end_time)->format('H:i')  == sprintf('%02d:00', $hour)) selected @endif>{{ sprintf('%02d:00', $hour) }}</option>
-                                                                <option value="{{ sprintf('%02d:30', $hour) }}"
-                                                                        @if(\Carbon\Carbon::parse($service->appointment_end_time)->format('H:i')  == sprintf('%02d:30', $hour)) selected @endif>{{ sprintf('%02d:30', $hour) }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="text-muted fs-7">Bu alan zorunludur.</div>
-                                                </div>
+
                                             </div>
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
@@ -194,6 +157,7 @@
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <div class="card card-flush pt-5">
                                         <div class="card-body pt-5">
+
                                             <div class="mb-10 row">
                                                 <div class="col-sm-12">
                                                     <label class="form-label">Açıklama</label>
@@ -248,40 +212,7 @@
     </script>
     <script>
         $(document).ready(function () {
-            function checkAppointmentVisibility() {
-                var canBeAppointment = $('#can_be_appointment').find(':selected').val();
-                if (canBeAppointment === "1") {
-                    $('#appointment_times').show();
-                    $('#appointment_start_time').prop('required', true);
-                    $('#appointment_end_time').prop('required', true);
-                } else {
-                    $('#appointment_times').hide();
-                    $('#appointment_start_time').prop('required', false).val('');
-                    $('#appointment_end_time').prop('required', false).val('');
-                }
-            }
-
-            checkAppointmentVisibility();
-
-            $('#can_be_appointment').on('change', function () {
-                checkAppointmentVisibility();
-            });
-
-            function validateTimes() {
-                var startTime = $('#appointment_start_time').val();
-                var endTime = $('#appointment_end_time').val();
-
-                if (startTime && endTime) {
-                    if (startTime >= endTime) {
-                        alert('Başlangıç saati, bitiş saatinden büyük olamaz!');
-                        $('#appointment_start_time').val('');
-                    }
-                }
-            }
-
-            $('#appointment_start_time, #appointment_end_time').on('change', function () {
-                validateTimes();
-            });
+            // Document Ready logic
         });
     </script>
 @endsection

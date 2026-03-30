@@ -51,6 +51,7 @@
                                 <th class="w-10px pe-2">
                                     No
                                 </th>
+                                <th>Görsel</th>
                                 <th class="min-w-250px">Başlık</th>
                                 <th class="min-w-150px">Kategori</th>
                                 <th class="min-w-150px">Durum</th>
@@ -61,6 +62,13 @@
                                 @foreach ($services as $service)
                                     <tr id="order-{{ $service->id }}">
                                         <td> {{ $loop->iteration }} </td>
+                                        <td>
+                                            @if($service->hasMedia('banner'))
+                                                <img src="{{ $service->getFirstMediaUrl('banner', 'thumb') }}" style="width:60px;height:45px;object-fit:cover;border-radius:4px;">
+                                            @else
+                                                <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
                                         <td><a href="{{ route('service.edit', $service->id) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">{{ $service->title }}</a></td>
                                         <td> {{ $service->getCategory->title }} </td>
                                         <td>

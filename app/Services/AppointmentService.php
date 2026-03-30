@@ -10,8 +10,8 @@ class AppointmentService
 {
     public function getWeeklyAvailability($service)
     {
-        $start_time = $service->appointment_start_time;
-        $end_time = $service->appointment_end_time;
+        $start_time = '09:00';
+        $end_time = '18:00';
 
         $days = [];
         $currentDate = Carbon::today();

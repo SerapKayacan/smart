@@ -51,8 +51,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}assets\frontend\css\bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}assets\frontend\css\style.css">
 
+    @if(env('GOOGLE_TAG_ID'))
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_TAG_ID') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-
+        gtag('config', '{{ env('GOOGLE_TAG_ID') }}');
+    </script>
+    @endif
 </head>
 
 <body>
@@ -146,42 +155,27 @@
                
 
                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown" data-bs-display="static">HİZMETLERİMİZ</a>
-                    <div class="dropdown-menu m-0">
-                        <a class="dropdown-item" href="{{ route('services-category.index') }}">Tüm Hizmetler</a>
-                        <div class="dropdown-divider"></div>
+                    <a href="#" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">HİZMETLERİMİZ</a>
+                    <ul class="dropdown-menu m-0 border-0 shadow-sm" style="border-radius: 12px;">
+                        <li><a class="dropdown-item fw-semibold" href="{{ route('services-category.index') }}">Tüm Hizmetler</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         @if(!empty($serviceCategories))
                         @foreach ($serviceCategories as $serviceCategory)
-                            <a class="dropdown-item" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
-                                {{ $serviceCategory->title }}
-                            </a>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
+                                    {{ $serviceCategory->title }}
+                                </a>
+                            </li>
                         @endforeach
                         @endif
-                    </div>
+                    </ul>
                 </div>        
                 <a href="{{ route('contact.index') }}" class="nav-item nav-link">İLETİŞİM</a>
+                <!-- Mobil İçin Referanslar Butonu / Sadece mobilde görünür -->
+                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none text-primary fw-bold">REFERANSLARIMIZ</a>
             </div>
+            <!-- Masaüstü İçin Referanslar Butonu / Sadece geniş ekranda görünür -->
             <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
-    <script>
-        // Fix Bootstrap dropdown on mobile — show on first tap
-        document.querySelectorAll('.nav-item.dropdown').forEach(function(item) {
-            var toggle = item.querySelector('[data-bs-toggle="dropdown"]');
-            var menu = item.querySelector('.dropdown-menu');
-            if (!toggle || !menu) return;
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                var isOpen = menu.classList.contains('show');
-                // close all others
-                document.querySelectorAll('.dropdown-menu.show').forEach(function(m) { m.classList.remove('show'); });
-                if (!isOpen) menu.classList.add('show');
-            });
-        });
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-item.dropdown')) {
-                document.querySelectorAll('.dropdown-menu.show').forEach(function(m) { m.classList.remove('show'); });
-            }
-        });
-    </script>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ReferenceController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,6 +41,7 @@ Route::middleware(['coming.soon'])->group(function () {
     Route::prefix('iletisim')->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('contact.index');
         Route::post('/gonder', [ContactController::class, 'submit'])->name('contact.submit');
+        Route::post('/kariyer-gonder', [ContactController::class, 'submitCv'])->name('contact.submitCv');
     });
 
     Route::prefix('hakkimizda')->group(function () {
@@ -122,5 +124,14 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
         Route::get('/duzenle/{id}', [ReferenceController::class, 'edit'])->name('edit');
         Route::put('/duzenle/{id}', [ReferenceController::class, 'update'])->name('update');
         Route::delete('/sil/{id}', [ReferenceController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('kurum')->name('partner.')->group(function () {
+        Route::get('/', [PartnerController::class, 'index'])->name('index');
+        Route::get('/yeni', [PartnerController::class, 'create'])->name('create');
+        Route::post('/yeni', [PartnerController::class, 'store'])->name('store');
+        Route::get('/duzenle/{id}', [PartnerController::class, 'edit'])->name('edit');
+        Route::put('/duzenle/{id}', [PartnerController::class, 'update'])->name('update');
+        Route::delete('/sil/{id}', [PartnerController::class, 'destroy'])->name('destroy');
     });
 });

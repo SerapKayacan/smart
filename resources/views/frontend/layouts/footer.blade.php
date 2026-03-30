@@ -14,24 +14,16 @@
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Güvenlik Hizmetleri</h4>
-                    <a class="btn btn-link" href="">Site Özel Güvenlik Hizmetleri</a>
-                    <a class="btn btn-link" href="">AVM Güvenliği</a>
-                    <a class="btn btn-link" href="">Fabrika Güvenliği</a>
-                    <a class="btn btn-link" href="">Şantiye Güvenliği</a>
-                    <a class="btn btn-link" href="">Eğitim Kurumları ve Okul Güvenliği</a>
-                    <a class="btn btn-link" href="">Otel ve Turistik İşletme Güvenliği</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Temizlik Hizmetleri</h4>
-                    <a class="btn btn-link" href="">AVM Temizlik Hizmetleri</a>
-                    <a class="btn btn-link" href="">Kat Hizmetleri (Housekeeping)</a>
-                    <a class="btn btn-link" href="">Steward Hizmetleri</a>
-                    <a class="btn btn-link" href="">Garson/Servis Personeli</a>
-                    <a class="btn btn-link" href="">Bulaşıkhane Hizmetleri</a>
-                    <a class="btn btn-link" href="">Otel Temizlik & Operasyon Hizmetleri</a>
-                </div>
+                @if(isset($serviceCategories))
+                    @foreach($serviceCategories->take(2) as $category)
+                        <div class="col-lg-3 col-md-6">
+                            <h4 class="text-light mb-4">{{ $category->title }}</h4>
+                            @foreach($category->services->take(6) as $service)
+                                <a class="btn btn-link" href="{{ route('services-detail.show', ['slug' => $service->slug]) }}">{{ $service->title }}</a>
+                            @endforeach
+                        </div>
+                    @endforeach
+                @endif
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Hızlı Bağlantılar</h4>
                     <a class="btn btn-link" href="{{ route('home') }}">Ana Sayfa</a>

@@ -13,8 +13,9 @@ class ServiceSeeder extends Seeder
         $security = ServiceCategory::firstOrCreate(
             ['slug' => 'guvenlik-hizmetleri'],
             [
-                'title'       => 'Güvenlik Hizmetleri',
-                'description' => 'Güvenlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
+                'title'            => 'Güvenlik Hizmetleri',
+                'meta_description' => 'Güvenlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
+                'description'      => 'Güvenlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
                 'sort_order'  => 1,
                 'is_active'   => true,
             ]
@@ -42,7 +43,6 @@ class ServiceSeeder extends Seeder
                     'detail'              => '',
                     'category_id'         => $security->id,
                     'sort_order'          => $data['sort_order'],
-                    'can_be_appointment'  => false,
                     'is_active'           => true,
                 ]
             );
@@ -51,8 +51,9 @@ class ServiceSeeder extends Seeder
         $cleaning = ServiceCategory::firstOrCreate(
             ['slug' => 'temizlik-hizmetleri'],
             [
-                'title'       => 'Temizlik Hizmetleri',
-                'description' => 'Temizlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
+                'title'            => 'Temizlik Hizmetleri',
+                'meta_description' => 'Temizlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
+                'description'      => 'Temizlik ihtiyaçlarınıza özel çözümler sunuyoruz.',
                 'sort_order'  => 2,
                 'is_active'   => true,
             ]
@@ -80,7 +81,6 @@ class ServiceSeeder extends Seeder
                     'detail'              => '',
                     'category_id'         => $cleaning->id,
                     'sort_order'          => $data['sort_order'],
-                    'can_be_appointment'  => false,
                     'is_active'           => true,
                 ]
             );

@@ -86,4 +86,78 @@
         </div>
     </div>
     <!-- Contact End -->
+    <!-- Career Start -->
+    <div class="container-xxl py-5 mt-5 bg-light" style="border-radius: 20px;">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-primary text-uppercase">// Kariyer //</h6>
+                <h1 class="mb-5">İnsan Kaynakları Başvurusu</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="wow fadeInUp bg-white p-5 rounded shadow-sm border border-primary border-opacity-10" data-wow-delay="0.2s">
+                        <p class="text-center mb-4">Aramıza katılmak isterseniz, aşağıdaki formu doldurarak CV'nizi (Özgeçmiş) bize iletebilirsiniz.</p>
+                        <form action="{{ route('contact.submitCv') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="hr_name" name="name" placeholder="Adınız Soyadınız" value="{{ old('name') }}" required>
+                                        <label for="hr_name">Adınız Soyadınız</label>
+                                        @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="hr_email" name="email" placeholder="E-Posta Adresiniz" value="{{ old('email') }}" required>
+                                        <label for="hr_email">E-Posta Adresiniz</label>
+                                        @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="hr_phone" name="phone" placeholder="Telefon Numaranız" value="{{ old('phone') }}" required>
+                                        <label for="hr_phone">Telefon Numaranız</label>
+                                        @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select @error('position') is-invalid @enderror" id="hr_position" name="position" style="height: 58px;" required>
+                                            <option value="" selected disabled>Pozisyon Seçiniz</option>
+                                            <option value="Güvenlik Görevlisi" {{ old('position') == 'Güvenlik Görevlisi' ? 'selected' : '' }}>Güvenlik Görevlisi</option>
+                                            <option value="Temizlik Personeli" {{ old('position') == 'Temizlik Personeli' ? 'selected' : '' }}>Temizlik Personeli</option>
+                                            <option value="Yönetici Adayı" {{ old('position') == 'Yönetici Adayı' ? 'selected' : '' }}>Yönetici Adayı</option>
+                                            <option value="Merkez Ofis" {{ old('position') == 'Merkez Ofis' ? 'selected' : '' }}>Merkez Ofis Personeli</option>
+                                            <option value="Diğer" {{ old('position') == 'Diğer' ? 'selected' : '' }}>Diğer</option>
+                                        </select>
+                                        <label for="hr_position">Başvurduğunuz Pozisyon</label>
+                                        @error('position')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-muted ms-2 mt-2">CV / Özgeçmiş Yükle (.pdf, .doc, .docx - Max 5MB)</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control p-3 @error('cv_file') is-invalid @enderror" id="cv_file" name="cv_file" accept=".pdf,.doc,.docx" required style="border-radius: 10px;">
+                                        @error('cv_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mt-3">
+                                        <textarea class="form-control @error('message') is-invalid @enderror" placeholder="Ön Yazı / Mesajınız (İsteğe Bağlı)" id="hr_message" name="message" style="height: 120px">{{ old('message') }}</textarea>
+                                        <label for="hr_message">Ön Yazı / Mesajınız (İsteğe Bağlı)</label>
+                                        @error('message')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4 text-center">
+                                    <button class="btn btn-primary w-50 py-3" type="submit" style="border-radius: 30px; font-weight: bold; letter-spacing: 1px;">Başvuruyu Gönder <i class="fa fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Career End -->
 @endsection

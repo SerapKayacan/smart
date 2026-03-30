@@ -51,6 +51,7 @@
                                 <th class="w-10px pe-2">
                                     No
                                 </th>
+                                <th>Görsel</th>
                                 <th class="min-w-250px">Başlık</th>
                                 <th class="min-w-150px">Durum</th>
                                 <th class="text-end min-w-70px">İşlemler</th>
@@ -60,6 +61,13 @@
                             @foreach ($carousels as $carousel)
                                 <tr id="order-{{  $carousel->id }}">
                                     <td> {{ $loop->iteration  }} </td>
+                                    <td>
+                                        @if($carousel->hasMedia('banner'))
+                                            <img src="{{ $carousel->getFirstMediaUrl('banner', 'thumb') }}" style="width:60px;height:45px;object-fit:cover;border-radius:4px;">
+                                        @else
+                                            <span class="text-muted">-</span>
+                                        @endif
+                                    </td>
                                     <td><a href="{{ route('carousel.edit', $carousel->id) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">{!!$carousel->title !!} </a></td>
                                     <td>
                                         @if ($carousel->is_active === 1)

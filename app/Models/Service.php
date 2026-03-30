@@ -23,9 +23,6 @@ class Service extends Model implements HasMedia
         'detail',
         'category_id',
         'sort_order',
-        'can_be_appointment',
-        'appointment_start_time',
-        'appointment_end_time',
         'is_active'
     ];
 
