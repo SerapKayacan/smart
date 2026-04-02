@@ -40,7 +40,12 @@ class Handler extends ExceptionHandler
         // Check if it's a 404 error
         if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             // Redirect to the home page
-            return redirect('https://sultanevdesaglikhizmetleri.com/');
+            return redirect('https://www.smartgrup.com.tr/');
+        }
+
+        // Catch file too big exceptions
+        if ($exception instanceof \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig || $exception instanceof \Illuminate\Http\Exceptions\PostTooLargeException) {
+            return redirect()->back()->with('error', 'Yüklemeye çalıştığınız dosya boyutu çok büyük. Lütfen maksimum 10 MB boyutunda bir dosya yükleyin.')->withInput();
         }
 
         return parent::render($request, $exception);

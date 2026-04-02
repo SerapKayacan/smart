@@ -15,7 +15,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         // The Crawler
-        SitemapGenerator::create('https://sultanevdesaglikhizmetleri.com/')
+        SitemapGenerator::create('https://www.smartgrup.com.tr/')
             ->hasCrawled(function (Url $url) {
                 // Some logic here
                 return $url;
