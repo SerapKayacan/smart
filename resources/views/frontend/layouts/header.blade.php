@@ -39,13 +39,17 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/home.css') }}" rel="stylesheet" type="text/css">
-
-    <!-- Removed duplicate bootstrap JS to prevent dropdown conflicts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Cleaned up duplicate stylesheets -->
+    <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}assets\frontend\css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}assets\frontend\css\style.css">
 
     @if(env('GOOGLE_TAG_ID'))
     <!-- Google tag (gtag.js) -->
@@ -149,6 +153,7 @@
                 <a href="{{ route('home') }}" class="nav-item nav-link active">ANA SAYFA</a>
                 <a href="{{ route('about-us.index') }}" class="nav-item nav-link">HAKKIMIZDA</a>
                
+
                <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">HİZMETLERİMİZ</a>
                     <ul class="dropdown-menu m-0 border-0 shadow-sm" style="border-radius: 12px;">

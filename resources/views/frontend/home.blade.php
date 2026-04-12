@@ -102,27 +102,27 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-6 pt-4 about-img-container">
+                <div class="col-lg-6 pt-4" style="min-height: 400px;">
                     <div class="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
                         <div class="row g-2 h-100">
                             <div class="col-6">
                                 <div class="position-relative h-100">
-                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us.jpg') }}" alt="Güvenlik Hizmetleri">
-                                    <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center about-img-caption-blue">
-                                        <span class="text-white fw-bold about-img-caption-text">GÜVENLİK</span>
+                                    <img class="img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/about-us.jpg') }}" style="object-fit: cover; border-radius: 8px;" alt="Güvenlik Hizmetleri">
+                                    <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(11,33,84,0.75); border-radius: 0 0 8px 8px;">
+                                        <span class="text-white fw-bold" style="font-size:0.85rem; letter-spacing:1px;">GÜVENLİK</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="position-relative h-100">
-                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" alt="Temizlik Hizmetleri">
-                                    <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center about-img-caption-red">
-                                        <span class="text-white fw-bold about-img-caption-text">TEMİZLİK</span>
+                                    <img class="img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" style="object-fit: cover; border-radius: 8px;" alt="Temizlik Hizmetleri">
+                                    <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(216,19,36,0.75); border-radius: 0 0 8px 8px;">
+                                        <span class="text-white fw-bold" style="font-size:0.85rem; letter-spacing:1px;">TEMİZLİK</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5 about-experience-box">
+                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5" style="background: rgba(0, 0, 0, .08);">
                             <h1 class="display-4 text-white mb-0">11 <span class="fs-4">Yıl</span></h1>
                             <h4 class="text-white">Deneyim</h4>
                         </div>
@@ -135,7 +135,7 @@
                     <div class="row g-4 mb-3 pb-3">
                         <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                             <div class="d-flex">
-                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1 about-list-number-box">
+                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
                                     <span class="fw-bold text-secondary">01</span>
                                 </div>
                                 <div class="ps-3">
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
                             <div class="d-flex">
-                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1 about-list-number-box">
+                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
                                     <span class="fw-bold text-secondary">02</span>
                                 </div>
                                 <div class="ps-3">
@@ -157,7 +157,7 @@
                         </div>
                         <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
                             <div class="d-flex">
-                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1 about-list-number-box">
+                                <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
                                     <span class="fw-bold text-secondary">03</span>
                                 </div>
                                 <div class="ps-3">
@@ -173,36 +173,7 @@
         </div>
     </div>
     <!-- About End -->
-<section class="new-services-slider">
-      <div class="recipe-container">
-        <h1>Hizmetlerimiz</h1>
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            @foreach($services as $service)
-            <div class="swiper-slide post">
-              <img
-                class="post-img"
-                src="{{ $service->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us.jpg') }}"
-                alt="{{ $service->title }}" />
 
-              <div class="post-body">
-                <div class="post-detail">
-                  <h2 class="post-name">{{ $service->title }}</h2>
-                </div>
-
-                <div class="post-actions">
-                  <a class="post-like" href="{{ route('services-detail.show', ['slug' => $service->slug]) }}">
-                    <i class="fas fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
-          <div class="swiper-scrollbar"></div>
-        </div>
-      </div>
-    </section>
 
     <!-- Fact Start -->
     <div class="container-fluid fact bg-dark my-5 py-5">
@@ -234,86 +205,87 @@
     <!-- Fact End -->
 
 
-
-
-
-    <!-- Custom Swiper Slider Start -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-
-
-    <section class="custom-slider-section">
-      <div class="content-container mb-4 mb-md-0">
-        <span>KEŞFEDİN</span>
-        <h1>Projelerimiz</h1>
-        <hr>
-        <p>Smart Grup olarak güvenlik ve temizlik alanlarında uzman kadromuzla, en yüksek kalitede profesyonel çözümler sunuyoruz.</p>
-        <a href="{{ route('references.index') }}" class="btn-download">TÜM PROJELER</a>
-      </div>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          @foreach($tabPanels as $tab)
-          <div class="swiper-slide custom-swiper-slide" style="background: linear-gradient(to top, rgba(11,33,84,0.9), rgba(11,33,84,0), rgba(11,33,84,0)), url('{{ $tab->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us.jpg') }}') no-repeat 50% 50% / cover;">
-            <div class="slide-content">
-              <h2>{{ $tab->title }}</h2>
+    <!-- Service Start -->
+    <div class="container-xxl service py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-primary text-uppercase">// Hizmetlerimiz //</h6>
+                <h1 class="mb-5">Hizmetlerimizi Keşfedin</h1>
             </div>
-          </div>
-          @endforeach
+
+            <!-- Tab Buttons Row -->
+            <div class="nav d-flex flex-wrap gap-3 justify-content-center mb-4 wow fadeInUp" data-wow-delay="0.2s" id="service-tab-nav" role="tablist">
+                @foreach($tabPanels as $i => $tab)
+                @php $color = $i % 2 === 0 ? '#0B2154' : '#D81324'; @endphp
+                        <button class="btn d-flex align-items-center gap-2 px-4 py-3 {{ $i === 0 ? 'active' : '' }}"
+                        data-bs-toggle="pill"
+                        data-bs-target="#tab-pane-{{ $tab->id }}"
+                        type="button"
+                        role="tab"
+                        aria-controls="tab-pane-{{ $tab->id }}"
+                        aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                        data-color="{{ $color }}"
+                        style="border:2px solid {{ $color }};border-radius:10px;font-weight:600;color:{{ $i === 0 ? '#fff' : $color }};background:{{ $i === 0 ? $color : 'transparent' }};">
+                    {{ $tab->nav_button_text }}
+                </button>
+                @endforeach
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content wow fadeInUp" data-wow-delay="0.3s">
+                @foreach($tabPanels as $i => $tab)
+                @php $color = $i % 2 === 0 ? '#0B2154' : '#D81324'; @endphp
+                <div class="tab-pane fade {{ $i === 0 ? 'show active' : '' }}" id="tab-pane-{{ $tab->id }}">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5" style="min-height:320px;">
+                            <div class="position-relative h-100" style="min-height:320px;">
+                                @if($tab->hasMedia('banner'))
+                                    <img class="position-absolute img-fluid w-100 h-100" src="{{ $tab->getFirstMediaUrl('banner','large') }}" style="object-fit:cover;border-radius:12px;" alt="{{ $tab->nav_button_text }}">
+                                @else
+                                    <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/frontend/img/service-' . min($i+1, 4) . '.jpg') }}" style="object-fit:cover;border-radius:12px;" alt="{{ $tab->nav_button_text }}">
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="mb-3" style="color:{{ $color }};">{!! $tab->title !!}</h3>
+                            <p class="mb-4 text-muted">{!! $tab->description !!}</p>
+                            @if($tab->bullet_1)<p class="mb-2"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_1 }}</p>@endif
+                            @if($tab->bullet_2)<p class="mb-2"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_2 }}</p>@endif
+                            @if($tab->bullet_3)<p class="mb-4"><i class="fa fa-check me-3" style="color:{{ $color }};"></i>{{ $tab->bullet_3 }}</p>@endif
+                            <a href="{{ $tab->button_link ?? route('services-category.index') }}"
+                               class="btn text-white py-3 px-5" style="background:{{ $color }};border-radius:8px;">
+                                {{ $tab->button_text ?? 'Devamını Oku' }}<i class="fa fa-arrow-right ms-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-    </section>
+    </div>
+    <!-- Service End -->
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var swiperOld = new Swiper(".custom-slider-section .swiper", {
-          effect: "coverflow",
-          grabCursor: true,
-          centeredSlides: true,
-          coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 3,
-            slideShadows: true
-          },
-          keyboard: {
-            enabled: true
-          },
-          mousewheel: {
-            thresholdDelta: 70
-          },
-          loop: true,
-          pagination: {
-            el: ".custom-slider-section .swiper-pagination",
-            clickable: true
-          },
-          breakpoints: {
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 1 },
-            1024: { slidesPerView: 2 },
-            1560: { slidesPerView: 3 }
-          }
-        });
-
-        var swiperNew = new Swiper(".new-services-slider .swiper", {
-          grabCursor: true,
-          speed: 400,
-          mousewheel: { invert: false },
-          scrollbar: { el: ".new-services-slider .swiper-scrollbar", draggable: true },
-          slidesPerView: 1,
-          spaceBetween: 15,
-          breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            900: { slidesPerView: 2, spaceBetween: 25 },
-            1200: { slidesPerView: 3, spaceBetween: 30 },
-            1500: { slidesPerView: 4, spaceBetween: 30 },
-          },
-        });
-      });
+        (function () {
+            var buttons = document.querySelectorAll('#service-tab-nav [data-color]');
+            function setColors() {
+                buttons.forEach(function(btn) {
+                    var color = btn.getAttribute('data-color');
+                    if (btn.classList.contains('active')) {
+                        btn.style.backgroundColor = color;
+                        btn.style.color = '#fff';
+                    } else {
+                        btn.style.backgroundColor = 'transparent';
+                        btn.style.color = color;
+                    }
+                });
+            }
+            setColors();
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() { setTimeout(setColors, 10); });
+            });
+        })();
     </script>
-    <!-- Custom Swiper Slider End -->
+
+
 @endsection

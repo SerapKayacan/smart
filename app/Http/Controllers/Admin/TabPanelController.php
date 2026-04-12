@@ -23,7 +23,14 @@ class TabPanelController extends Controller
     public function store(Request $request)
     {
         $tabPanel = TabPanel::create([
+            'nav_button_text' => $request->nav_button_text,
             'title'           => $request->title,
+            'description'     => $request->description,
+            'bullet_1'        => $request->bullet_1,
+            'bullet_2'        => $request->bullet_2,
+            'bullet_3'        => $request->bullet_3,
+            'button_text'     => $request->button_text,
+            'button_link'     => $request->button_link,
             'sort_order'      => $request->sort_order ?? 0,
             'is_active'       => $request->boolean('is_active', true),
         ]);
@@ -48,7 +55,14 @@ class TabPanelController extends Controller
     {
         $tabPanel = TabPanel::findOrFail($id);
         $tabPanel->update([
+            'nav_button_text' => $request->nav_button_text,
             'title'           => $request->title,
+            'description'     => $request->description,
+            'bullet_1'        => $request->bullet_1,
+            'bullet_2'        => $request->bullet_2,
+            'bullet_3'        => $request->bullet_3,
+            'button_text'     => $request->button_text,
+            'button_link'     => $request->button_link,
             'sort_order'      => $request->sort_order ?? 0,
             'is_active'       => $request->boolean('is_active', true),
         ]);
