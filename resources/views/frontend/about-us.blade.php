@@ -20,7 +20,7 @@
                     <div class="row g-2">
                         <div class="col-6">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Güvenlik">
+                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Güvenlik">
                                 <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(11,33,84,0.8);border-radius:0 0 8px 8px;">
                                     <span class="text-white fw-bold" style="letter-spacing:1px;">GÜVENLİK</span>
                                 </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-6">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Temizlik">
+                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Temizlik">
                                 <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(216,19,36,0.8);border-radius:0 0 8px 8px;">
                                     <span class="text-white fw-bold" style="letter-spacing:1px;">TEMİZLİK</span>
                                 </div>
@@ -108,7 +108,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <img src="{{ asset('assets/frontend/img/about-us.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Güvenlik Hizmetleri">
+                    <img src="{{ asset('assets/frontend/img/about-us2.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Güvenlik Hizmetleri">
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="order: 2; order-lg: 1;">
-                    <img src="{{ asset('assets/frontend/img/about-us2.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Temizlik Hizmetleri">
+                    <img src="{{ asset('assets/frontend/img/about-us.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Temizlik Hizmetleri">
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" style="order: 1; order-lg: 2;">
                     <h6 class="text-uppercase mb-2" style="color:#D81324; letter-spacing:2px;">// Temizlik Hizmetleri //</h6>
