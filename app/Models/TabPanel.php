@@ -14,15 +14,8 @@ class TabPanel extends  Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
     protected $fillable = [
-        'nav_button_text',
         'title',
-        'description',
-        'bullet_1',
-        'bullet_2',
-        'bullet_3',
         'sort_order',
-        'button_text',
-        'button_link',
         'is_active'
     ];
     public function tags()
