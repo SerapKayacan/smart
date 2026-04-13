@@ -10,7 +10,7 @@ class ComingSoon
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (env('COMING_SOON', false)) {
+        if (config('app.coming_soon', false)) {
             return response()->view('coming-soon');
         }
 
