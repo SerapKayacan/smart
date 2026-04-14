@@ -48,10 +48,7 @@
                         <table class="table align-middle table-row-dashed fs-6 gy-5" id="dataTable">
                             <thead>
                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                <th class="w-10px pe-2">
-                                    No
-                                </th>
-                                <th>Görsel</th>
+                                <th class="w-10px pe-2">No</th>
                                 <th class="min-w-250px">Başlık</th>
                                 <th class="min-w-150px">Durum</th>
                                 <th class="text-end min-w-70px">İşlemler</th>
@@ -61,13 +58,6 @@
                                 @foreach ($serviceCategories as $serviceCategory)
                                     <tr id="order-{{ $serviceCategory->id }}">
                                         <td> {{ $loop->iteration }} </td>
-                                        <td>
-                                            @if($serviceCategory->hasMedia('banner'))
-                                                <img src="{{ $serviceCategory->getFirstMediaUrl('banner', 'thumb') }}" style="width:60px;height:45px;object-fit:cover;border-radius:4px;">
-                                            @else
-                                                <span class="text-muted">-</span>
-                                            @endif
-                                        </td>
                                         <td><a href="{{ route('service-category.edit', $serviceCategory->id) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">{{ $serviceCategory->title }}</a></td>
 
                                         
