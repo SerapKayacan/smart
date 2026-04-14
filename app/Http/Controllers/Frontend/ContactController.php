@@ -35,9 +35,14 @@ class ContactController extends Controller
                 'subject'       => $request->get('subject'),
                 'messageDetail' => $request->get('message'),
             ], function ($mail) use ($request) {
-                $mail->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-                $mail->subject(env('MAIL_SUBJECT', 'Yeni İletişim Formu Mesajı'));
-                $mail->to(env('MAIL_TO_ADDRESS'));
+                $fromAddress = config('mail.from.address') ?: 'noreply@smartozelguvenlik.com';
+                $fromName    = config('mail.from.name') ?: 'Smart Grup';
+                $toAddress   = env('MAIL_TO_ADDRESS') ?: 'bilgi@smartozelguvenlik.com';
+                $subject     = env('MAIL_SUBJECT') ?: 'Yeni İletişim Formu Mesajı';
+
+                $mail->from($fromAddress, $fromName);
+                $mail->subject($subject);
+                $mail->to($toAddress);
             }
         );
 
