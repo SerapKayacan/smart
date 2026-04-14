@@ -25,9 +25,8 @@ class ServiceCategoryController extends Controller
     {
         $serviceCategory = new ServiceCategory();
         $serviceCategory->title       = $request->title;
-        $serviceCategory->slug             = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
-        $serviceCategory->meta_description = $request->meta_description;
-        $serviceCategory->description      = $request->description;
+        $serviceCategory->slug        = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
+        $serviceCategory->description = $request->description;
         $serviceCategory->sort_order  = $request->sort_order;
         $serviceCategory->is_active   = $request->is_active;
         $serviceCategory->save();
@@ -66,9 +65,8 @@ class ServiceCategoryController extends Controller
         if ($serviceCategory->title !== $request->title) {
             $serviceCategory->slug = SlugHelper::generateUniqueSlug(ServiceCategory::class, $request->title);
         }
-        $serviceCategory->title            = $request->title;
-        $serviceCategory->meta_description = $request->meta_description;
-        $serviceCategory->description      = $request->description;
+        $serviceCategory->title       = $request->title;
+        $serviceCategory->description = $request->description;
         $serviceCategory->sort_order  = $request->sort_order;
         $serviceCategory->is_active   = $request->is_active;
         $serviceCategory->update();

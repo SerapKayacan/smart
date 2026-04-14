@@ -76,6 +76,22 @@
                                             </div>
                                            
                                             <div class="mb-10 row">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Görsel</label>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <a class="uploadImage btn btn-primary text-white btn-sm"><i class="far fa-file-image"></i> Seç</a>
+                                                                <input type="file" accept="image/jpeg,image/png,image/jpg" name="banner_image" class="d-none">
+                                                                <a class="removeImage btn btn-danger text-white btn-sm"><i class="fa fa-trash"></i> Kaldır</a>
+                                                                <div class="row col-md-12 thumb-output p-2"><img class="thumb img-thumbnail" src=""></div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-10 row">
                                                 <div class="col-sm-12">
                                                     <label class="required form-label">Başlık</label>
                                                     <input class="form-control" name="title" value="" required/>

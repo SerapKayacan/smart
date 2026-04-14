@@ -67,7 +67,7 @@
                                                                     <i class="fa fa-trash"></i> Kaldır
                                                                 </a>
                                                                 <div class="row col-md-12 thumb-output p-2">
-                                                                    <img class="thumb img-thumbnail" src="{{ $serviceCategory->getFirstMediaUrl('banner', 'thumb') }}">
+                                                                    <img class="thumb img-thumbnail" src="{{ $serviceCategory->hasMedia('banner') ? $serviceCategory->getFirstMediaUrl('banner', 'thumb') : '' }}">
                                                                 </div>
                                                             </span>
                                                         </div>
