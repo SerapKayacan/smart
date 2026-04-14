@@ -4,18 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use App\Services\AppointmentService;
 use Artesaos\SEOTools\Facades\SEOTools;
 
 class ServicesDetailController extends Controller
 {
-    protected $appointmentService;
-
-    public function __construct(AppointmentService $appointmentService)
-    {
-        $this->appointmentService = $appointmentService;
-    }
-
     public function show(string $slug)
     {
         $service = Service::with('getCategory')
@@ -32,11 +24,8 @@ class ServicesDetailController extends Controller
             SEOTools::addImages($service->getFirstMediaUrl('banner', 'large'));
         }
 
-        $days = $this->appointmentService->getWeeklyAvailability($service);
-
         return view('frontend.services-detail', [
             'service' => $service,
-            'days'    => $days,
         ]);
     }
 }

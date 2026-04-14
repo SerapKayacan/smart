@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
             $table->text('description')->nullable();
             $table->integer('sort_order')->nullable();
             $table->boolean('is_active')->default(true);
