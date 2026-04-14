@@ -35,7 +35,7 @@
                                                     <input type="file" accept="image/jpeg,image/png,image/jpg" name="banner_image" class="d-none">
                                                     <a class="removeImage btn btn-danger text-white btn-sm"><i class="fa fa-trash"></i> Kaldır</a>
                                                     <div class="row col-md-12 thumb-output p-2">
-                                                        <img class="thumb img-thumbnail" src="{{ $tabPanel->getFirstMediaUrl('banner','large') }}">
+                                                        <img class="thumb img-thumbnail" src="{{ $tabPanel->hasMedia('banner') ? $tabPanel->getFirstMediaUrl('banner','medium') : '' }}">
                                                     </div>
                                                 </span>
                                             </div>
@@ -45,48 +45,8 @@
 
                                 <div class="mb-10 row">
                                     <div class="col-sm-12">
-                                        <label class="required form-label">Nav Buton Yazısı</label>
-                                        <input class="form-control" name="nav_button_text" value="{{ old('nav_button_text', $tabPanel->nav_button_text) }}" required/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-12">
-                                        <label class="form-label">Başlık</label>
-                                        <input class="form-control" name="title" value="{{ old('title', $tabPanel->title) }}"/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-12">
-                                        <label class="form-label">Açıklama</label>
-                                        <textarea class="form-control" name="description" rows="3">{{ old('description', $tabPanel->description) }}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 1</label>
-                                        <input class="form-control" name="bullet_1" value="{{ old('bullet_1', $tabPanel->bullet_1) }}"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 2</label>
-                                        <input class="form-control" name="bullet_2" value="{{ old('bullet_2', $tabPanel->bullet_2) }}"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 3</label>
-                                        <input class="form-control" name="bullet_3" value="{{ old('bullet_3', $tabPanel->bullet_3) }}"/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Buton Yazısı</label>
-                                        <input class="form-control" name="button_text" value="{{ old('button_text', $tabPanel->button_text) }}"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Buton Linki</label>
-                                        <input class="form-control" name="button_link" value="{{ old('button_link', $tabPanel->button_link) }}"/>
+                                        <label class="required form-label">Başlık</label>
+                                        <input class="form-control" name="title" value="{{ old('title', $tabPanel->title) }}" required/>
                                     </div>
                                 </div>
 

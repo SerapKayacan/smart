@@ -23,9 +23,9 @@ class TabPanelController extends Controller
     public function store(Request $request)
     {
         $tabPanel = TabPanel::create([
-            'title'           => $request->title,
-            'sort_order'      => $request->sort_order ?? 0,
-            'is_active'       => $request->boolean('is_active', true),
+            'title'      => $request->title,
+            'sort_order' => $request->sort_order ?? 0,
+            'is_active'  => $request->boolean('is_active', true),
         ]);
 
         if ($request->hasFile('banner_image')) {
@@ -48,9 +48,9 @@ class TabPanelController extends Controller
     {
         $tabPanel = TabPanel::findOrFail($id);
         $tabPanel->update([
-            'title'           => $request->title,
-            'sort_order'      => $request->sort_order ?? 0,
-            'is_active'       => $request->boolean('is_active', true),
+            'title'      => $request->title,
+            'sort_order' => $request->sort_order ?? 0,
+            'is_active'  => $request->boolean('is_active', true),
         ]);
 
         if ($request->hasFile('banner_image')) {

@@ -10,18 +10,16 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TabPanel extends  Model implements HasMedia
+class TabPanel extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
+
     protected $fillable = [
         'title',
         'sort_order',
-        'is_active'
+        'is_active',
     ];
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'tab_panel_tags');
-    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('large')

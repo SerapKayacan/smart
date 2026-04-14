@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item"><span class="bullet bg-gray-400 w-5px h-2px"></span></li>
                         <li class="breadcrumb-item text-muted"><a href="{{ route('tab-panel.index') }}" class="text-muted text-hover-primary">Tab Panel Listesi</a></li>
                         <li class="breadcrumb-item"><span class="bullet bg-gray-400 w-5px h-2px"></span></li>
-                        <li class="breadcrumb-item text-muted">Yeni Tab Panel</li>
+                        <li class="breadcrumb-item text-muted">Yeni</li>
                     </ul>
                 </div>
             </div>
@@ -42,55 +42,15 @@
 
                                 <div class="mb-10 row">
                                     <div class="col-sm-12">
-                                        <label class="required form-label">Nav Buton Yazısı</label>
-                                        <input class="form-control" name="nav_button_text" value="{{ old('nav_button_text') }}" required/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-12">
-                                        <label class="form-label">Başlık</label>
-                                        <input class="form-control" name="title" value="{{ old('title') }}"/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-12">
-                                        <label class="form-label">Açıklama</label>
-                                        <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 1</label>
-                                        <input class="form-control" name="bullet_1" value="{{ old('bullet_1') }}" placeholder="Örn: Sertifikalı Personel"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 2</label>
-                                        <input class="form-control" name="bullet_2" value="{{ old('bullet_2') }}" placeholder="Örn: 7/24 Hizmet"/>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label">Madde 3</label>
-                                        <input class="form-control" name="bullet_3" value="{{ old('bullet_3') }}" placeholder="Örn: Modern Ekipman"/>
-                                    </div>
-                                </div>
-
-                                <div class="mb-10 row">
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Buton Yazısı</label>
-                                        <input class="form-control" name="button_text" value="{{ old('button_text', 'Devamını Oku') }}"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label">Buton Linki</label>
-                                        <input class="form-control" name="button_link" value="{{ old('button_link') }}" placeholder="/hizmetler/guvenlik-hizmetleri"/>
+                                        <label class="required form-label">Başlık</label>
+                                        <input class="form-control" name="title" value="{{ old('title') }}" required/>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <label class="form-label">Sıra</label>
-                                        <input class="form-control" name="sort_order" type="number" value="{{ old('sort_order', 1) }}" min="0" max="99"/>
+                                        <input class="form-control" name="sort_order" type="number" value="{{ old('sort_order', 0) }}" min="0" max="99"/>
                                     </div>
                                     <div class="col-sm-3">
                                         <label class="form-label">Durum</label>
