@@ -45,7 +45,7 @@
 
                                 <div class="mb-10 row">
                                     <div class="col-sm-12">
-                                        <label class="required form-label">Başlık</label>
+                                        <label class="form-label">Başlık</label>
                                         <input class="form-control" name="title" value="{{ old('title', $tabPanel->title) }}" required/>
                                     </div>
                                 </div>

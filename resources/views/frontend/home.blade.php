@@ -254,10 +254,12 @@
         <div class="swiper-wrapper">
           @foreach($tabPanels as $tab)
           <div class="swiper-slide custom-swiper-slide" style="background: linear-gradient(to top, rgba(11,33,84,0.9), rgba(11,33,84,0), rgba(11,33,84,0)), url('{{ $tab->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us.jpg') }}') no-repeat 50% 50% / cover;">
-            <div class="slide-content">
+         {{--   
+          <div class="slide-content">
               <h2>{{ $tab->title }}</h2>
             </div>
           </div>
+          --}}
           @endforeach
         </div>
         <!-- Add Pagination -->
