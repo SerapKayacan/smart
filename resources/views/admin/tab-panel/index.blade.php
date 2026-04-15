@@ -70,7 +70,7 @@
                                             <span class="text-muted">-</span>
                                         @endif
                                     </td>
-                                    <td><a href="{{ route('tab-panel.edit', $tabPanel->id) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">{!!$tabPanel->title !!} </a></td>
+                                    {{-- <td><a href="{{ route('tab-panel.edit', $tabPanel->id) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">{!!$tabPanel->title !!} </a></td> --}}
                                     <td>
                                         @if ($tabPanel->is_active === 1)
                                             <div class="badge badge-light-success">Aktif</div>
