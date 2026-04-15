@@ -35,10 +35,10 @@ class ContactController extends Controller
                 'subject'       => $request->get('subject'),
                 'messageDetail' => $request->get('message'),
             ], function ($mail) use ($request) {
-                $fromAddress = config('mail.from.address') ?: 'noreply@smartgrup.com.tr';
+                $fromAddress = config('mail.from.address') ?: 'noreply@smartozelguvenlik.com';
                 $fromName    = config('mail.from.name') ?: 'Smart Grup';
-                $toAddress   = config('mail.to_address', 'kayacan.serap@gmail.com');
-                $subject     = config('mail.subject', 'Yeni İletişim Formu Mesajı');
+                $toAddress   = env('MAIL_TO_ADDRESS') ?: 'bilgi@smartozelguvenlik.com';
+                $subject     = env('MAIL_SUBJECT') ?: 'Yeni İletişim Formu Mesajı';
 
                 $mail->from($fromAddress, $fromName);
                 $mail->subject($subject);
