@@ -37,12 +37,13 @@ class HumanResourcesMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
-    {
-        return new Envelope(
-            subject: 'Yeni Kariyer / İnsan Kaynakları Başvurusu: ' . $this->applicationData['name'],
-        );
-    }
+   public function envelope()
+{
+    return new Envelope(
+        from: 'ik.smartgrup@gmail.com',
+        subject: 'Yeni Kariyer / İnsan Kaynakları Başvurusu: ' . $this->applicationData['name'],
+    );
+}
 
     /**
      * Get the message content definition.

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HumanResourcesMail;
 
+
 class ContactController extends Controller
 {
 
@@ -90,14 +91,17 @@ class ContactController extends Controller
     }
 
     // Send mail
-    Mail::to($hrEmail)->send(
-        new HumanResourcesMail(
+  
+
+Mail::to('ik.smartgrup@gmail.com')
+    ->send(
+        (new HumanResourcesMail(
             $applicationData,
             $absolutePath,
             $file->getClientOriginalName()
-        )
+        ))
+        ->from('ik.smartgrup@gmail.com', 'Smart Grup') // ✅ ADD THIS
     );
-
     return redirect()->back()->with(
         'success',
         'Kariyer başvurunuz başarıyla alındı ve İnsan Kaynakları departmanına iletildi!'
