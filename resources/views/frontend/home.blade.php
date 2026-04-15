@@ -245,7 +245,7 @@
     <section class="custom-slider-section">
       <div class="content-container mb-4 mb-md-0">
         <span>KEŞFEDİN</span>
-        <h1>Projelerimiz</h1>
+        <h1>Operasyonel Faaliyetlerimiz</h1>
         <hr>
         <p>Smart Grup olarak güvenlik ve temizlik alanlarında uzman kadromuzla, en yüksek kalitede profesyonel çözümler sunuyoruz.</p>
         <a href="{{ route('references.index') }}" class="btn-download">TÜM PROJELER</a>
