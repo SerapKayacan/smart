@@ -175,7 +175,7 @@
     <!-- About End -->
 <section class="new-services-slider">
       <div class="recipe-container">
-        <h1>Hizmetlerimiz</h1>
+        <h1>HİZMETLERİMİZ</h1>
         <div class="swiper">
           <div class="swiper-wrapper">
             @foreach($services as $service)
