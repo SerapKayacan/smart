@@ -52,7 +52,9 @@
                                     No
                                 </th>
                                 <th>Görsel</th>
+                                {{-- 
                                 <th class="min-w-250px">Başlık</th>
+                                --}}
                                 <th class="min-w-150px">Durum</th>
                                 <th class="text-end min-w-70px">İşlemler</th>
                             </tr>
