@@ -29,22 +29,28 @@ class ContactController extends Controller
             'message' => 'required|string|max:2000',
         ]);
 
-        Mail::send('frontend.mail', [
-                'name'          => $request->get('name'),
-                'email'         => $request->get('email'),
-                'subject'       => $request->get('subject'),
-                'messageDetail' => $request->get('message'),
-            ], function ($mail) use ($request) {
-                $fromAddress = config('mail.from.address') ?: 'noreply@smartozelguvenlik.com';
-                $fromName    = config('mail.from.name') ?: 'Smart Grup';
-                $toAddress   = env('MAIL_TO_ADDRESS') ?: 'bilgi@smartozelguvenlik.com';
-                $subject     = env('MAIL_SUBJECT') ?: 'Yeni İletişim Formu Mesajı';
+        try {
+            Mail::send('frontend.mail', [
+                    'name'          => $request->get('name'),
+                    'email'         => $request->get('email'),
+                    'subject'       => $request->get('subject'),
+                    'messageDetail' => $request->get('message'),
+                ], function ($mail) use ($request) {
+                    $fromAddress = config('mail.from.address') ?: 'noreply@smartgrup.com.tr';
+                    $fromName    = config('mail.from.name') ?: 'Smart Grup';
+                    $toAddress   = env('MAIL_TO_ADDRESS') ?: 'bilgi@smartozelguvenlik.com';
+                    $subject     = env('MAIL_SUBJECT') ?: 'Yeni İletişim Formu Mesajı';
 
-                $mail->from($fromAddress, $fromName);
-                $mail->subject($subject);
-                $mail->to($toAddress);
-            }
-        );
+                    $mail->from($fromAddress, $fromName);
+                    $mail->subject($subject);
+                    $mail->to($toAddress);
+                }
+            );
+            \Log::info('Mail sent successfully to: ' . env('MAIL_TO_ADDRESS'));
+        } catch (\Exception $e) {
+            \Log::error('Mail sending failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Mail gönderilemedi: ' . $e->getMessage());
+        }
 
         return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi!');
     }
