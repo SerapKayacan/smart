@@ -100,7 +100,7 @@ Mail::to('ik.smartgrup@gmail.com')
             $absolutePath,
             $file->getClientOriginalName()
         ))
-        ->from('ik.smartgrup@gmail.com', 'Smart Grup') // ✅ ADD THIS
+        ->from('noreply@smartgrup.com.tr', 'Smart Grup') // ✅ ADD THIS
     );
     return redirect()->back()->with(
         'success',
