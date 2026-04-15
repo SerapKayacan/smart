@@ -55,36 +55,52 @@ class ContactController extends Controller
         return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi!');
     }
 
-    public function submitCv(Request $request)
-    {
-        $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|max:255',
-            'phone'    => 'required|string|max:50',
-            'position' => 'required|string|max:255',
-            'message'  => 'nullable|string|max:2000',
-            'cv_file'  => 'required|file|mimes:pdf,doc,docx|max:5120', // 5MB max
-        ]);
+ public function submitCv(Request $request)
+{
+    $request->validate([
+        'name'     => 'required|string|max:255',
+        'email'    => 'required|email|max:255',
+        'phone'    => 'required|string|max:50',
+        'position' => 'required|string|max:255',
+        'message'  => 'nullable|string|max:2000',
+        'cv_file'  => 'required|file|mimes:pdf,doc,docx|max:5120',
+    ]);
 
-        $file = $request->file('cv_file');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        
-        // Store temporarily in local storage
-        $filePath = $file->storeAs('cv', $fileName, 'local'); 
-        $absolutePath = storage_path('app/cv/' . $fileName);
+    $file = $request->file('cv_file');
+    $fileName = time() . '_' . $file->getClientOriginalName();
 
-        $applicationData = [
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'phone'    => $request->phone,
-            'position' => $request->position,
-            'message'  => $request->message,
-        ];
+    // Store file
+    $filePath = $file->storeAs('cv', $fileName, 'local');
+    $absolutePath = storage_path('app/cv/' . $fileName);
 
-        $hrEmail = env('HR_MAIL_ADDRESS', env('MAIL_TO_ADDRESS'));
+    $applicationData = [
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'phone'    => $request->phone,
+        'position' => $request->position,
+        'message'  => $request->message,
+    ];
 
-        Mail::to($hrEmail)->send(new HumanResourcesMail($applicationData, $absolutePath, $file->getClientOriginalName()));
+    // ✅ Directly set HR email (no env issue anymore)
+    $hrEmail = 'ik.smartgrup@gmail.com';
 
-        return redirect()->back()->with('success', 'Kariyer başvurunuz başarıyla alındı ve İnsan Kaynakları departmanına iletildi!');
+    // Extra safety check
+    if (empty($hrEmail)) {
+        return back()->with('error', 'HR email is not defined.');
     }
+
+    // Send mail
+    Mail::to($hrEmail)->send(
+        new HumanResourcesMail(
+            $applicationData,
+            $absolutePath,
+            $file->getClientOriginalName()
+        )
+    );
+
+    return redirect()->back()->with(
+        'success',
+        'Kariyer başvurunuz başarıyla alındı ve İnsan Kaynakları departmanına iletildi!'
+    );
+}
 }
