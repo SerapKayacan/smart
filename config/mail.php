@@ -15,6 +15,9 @@ return [
 
     'default' => env('MAIL_MAILER', 'smtp'),
 
+    'to_address' => env('MAIL_TO_ADDRESS', 'kayacan.serap@gmail.com'),
+    'subject'    => env('MAIL_SUBJECT', 'Yeni İletişim Formu Mesajı'),
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
