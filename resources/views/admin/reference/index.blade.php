@@ -37,7 +37,6 @@
                                     <th>No</th>
                                     <th>Görsel</th>
                                     <th>Ad</th>
-                                    <th>Kategori</th>
                                     <th>Konum</th>
                                     <th>Durum</th>
                                     <th class="text-end">İşlemler</th>
@@ -56,11 +55,6 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('reference.edit', $reference->id) }}" class="text-gray-800 text-hover-primary fw-bold">{{ $reference->name }}</a>
-                                    </td>
-                                    <td>
-                                        <span class="badge {{ $reference->category === 'security' ? 'badge-light-primary' : 'badge-light-danger' }}">
-                                            {{ $reference->category === 'security' ? 'Güvenlik' : 'Temizlik' }}
-                                        </span>
                                     </td>
                                     <td>{{ $reference->location ?? '-' }}</td>
                                     <td>

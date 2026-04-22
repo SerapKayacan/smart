@@ -62,14 +62,6 @@
                                 </div>
 
                                 <div class="mb-10 row">
-                                    <div class="col-sm-6">
-                                        <label class="required form-label">Kategori</label>
-                                        <select name="category" class="form-control" required>
-                                            @foreach($categories as $value => $label)
-                                                <option value="{{ $value }}" {{ old('category') == $value ? 'selected' : '' }}>{{ $label }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
                                     <div class="col-sm-3">
                                         <label class="form-label">Sıra</label>
                                         <input class="form-control" name="sort_order" type="number" value="{{ old('sort_order', 0) }}" min="0">

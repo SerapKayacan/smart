@@ -7,7 +7,7 @@
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-white text-uppercase mb-3">// Referanslarımız //</h6>
                 <h1 class="text-white mb-2">Tamamladığımız İşler</h1>
-                <p class="text-white-50 mb-0">Yıllar içinde gerçekleştirdiğimiz projeler ve güvendiğimiz kurumlar</p>
+                <p class="text-white-50 mb-0">Yıllar İçinde Gerçekleştirdiğimiz Projeler Ve Güvendiğimiz Kurumlar</p>
             </div>
         </div>
     </div>
@@ -17,27 +17,21 @@
     @if($securityReferences->count() > 0)
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="d-flex align-items-center gap-3 mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div style="width:5px;height:50px;background:#0B2154;border-radius:3px;"></div>
-                <div>
-                    <h6 class="text-uppercase mb-1" style="color:#0B2154;letter-spacing:2px;font-size:0.8rem;">// Güvenlik Hizmetleri //</h6>
-                    <h2 class="mb-0">Güvenlik Referanslarımız</h2>
-                </div>
-            </div>
             <div class="row g-4">
                 @foreach($securityReferences as $i => $reference)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
                     <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(11,33,84,0.1);border:3px solid #0B2154;">
                         <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;position:relative;">
-                            @if($reference->hasMedia('image'))
+                           @if($reference->hasMedia('image'))
                                 <img src="{{ $reference->getFirstMediaUrl('image','large') }}"
                                      class="w-100 h-100" style="object-fit:cover;" alt="{{ $reference->name }}">
+                           
                             @else
                                 <div class="w-100 h-100 d-flex align-items-center justify-content-center"
                                      style="background:rgba(11,33,84,0.08);">
                                     <i class="fa fa-shield-alt fa-4x" style="color:#0B2154;opacity:0.2;"></i>
                                 </div>
-                            @endif
+                            @endif  
                             @if($reference->location)
                             <div class="position-absolute bottom-0 start-0 m-2 px-2 py-1 d-flex align-items-center gap-1"
                                  style="background:rgba(0,0,0,0.55);border-radius:6px;">
@@ -65,53 +59,7 @@
     <div style="height:4px;background:linear-gradient(90deg,#0B2154,#D81324);"></div>
     @endif
 
-    <!-- Cleaning References Start -->
-    @if($cleaningReferences->count() > 0)
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="d-flex align-items-center gap-3 mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div style="width:5px;height:50px;background:#D81324;border-radius:3px;"></div>
-                <div>
-                    <h6 class="text-uppercase mb-1" style="color:#D81324;letter-spacing:2px;font-size:0.8rem;">// Temizlik Hizmetleri //</h6>
-                    <h2 class="mb-0">Temizlik Referanslarımız</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                @foreach($cleaningReferences as $i => $reference)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($i % 3) * 0.15 }}s">
-                    <div class="h-100 overflow-hidden" style="border-radius:16px;box-shadow:0 4px 24px rgba(216,19,36,0.1);border:3px solid #D81324;">
-                        <div style="height:200px;overflow:hidden;border-radius:14px 14px 0 0;position:relative;">
-                            @if($reference->hasMedia('image'))
-                                <img src="{{ $reference->getFirstMediaUrl('image','large') }}"
-                                     class="w-100 h-100" style="object-fit:cover;" alt="{{ $reference->name }}">
-                            @else
-                                <div class="w-100 h-100 d-flex align-items-center justify-content-center"
-                                     style="background:rgba(216,19,36,0.08);">
-                                    <i class="fa fa-broom fa-4x" style="color:#D81324;opacity:0.2;"></i>
-                                </div>
-                            @endif
-                            @if($reference->location)
-                            <div class="position-absolute bottom-0 start-0 m-2 px-2 py-1 d-flex align-items-center gap-1"
-                                 style="background:rgba(0,0,0,0.55);border-radius:6px;">
-                                <i class="fa fa-map-marker-alt text-white" style="font-size:0.75rem;"></i>
-                                <small class="text-white" style="font-size:0.75rem;">{{ $reference->location }}</small>
-                            </div>
-                            @endif
-                        </div>
-                        <div class="p-4 bg-white" style="border-radius:0 0 14px 14px;">
-                            <h5 class="fw-bold mb-3" style="color:#D81324;">{{ $reference->name }}</h5>
-                            @if($reference->description)
-                            <p class="text-muted mb-0" style="font-size:0.88rem;line-height:1.7;">{{ $reference->description }}</p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    @endif
-    <!-- Cleaning References End -->
+    
 
     @if($securityReferences->count() === 0 && $cleaningReferences->count() === 0)
     <div class="container-xxl py-5">
