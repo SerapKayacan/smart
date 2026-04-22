@@ -146,18 +146,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">ANA SAYFA</a>
-                <a href="{{ route('about-us.index') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'about-us.index' ? 'active' : '' }}">HAKKIMIZDA</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">ANA SAYFA</a>
+                <a href="{{ route('about-us.index') }}" class="nav-item nav-link {{ request()->routeIs('about-us.index') ? 'active' : '' }}">HAKKIMIZDA</a>
                
                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {{ in_array(Route::currentRouteName(), ['services-category.index', 'services.byCategory', 'home.services.show']) ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">HİZMETLERİMİZ</a>
+                    <a href="#" class="nav-link dropdown-toggle {{ request()->routeIs('services-category.index') || request()->routeIs('services.byCategory') || request()->routeIs('home.services.show') ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">HİZMETLERİMİZ</a>
                     <ul class="dropdown-menu m-0 border-0 shadow-sm" style="border-radius: 12px;">
-                        <li><a class="dropdown-item fw-semibold {{ Route::currentRouteName() == 'services-category.index' ? 'active' : '' }}" href="{{ route('services-category.index') }}">Tüm Hizmetler</a></li>
+                        <li><a class="dropdown-item fw-semibold {{ request()->routeIs('services-category.index') ? 'active' : '' }}" href="{{ route('services-category.index') }}">Tüm Hizmetler</a></li>
                         <li><hr class="dropdown-divider"></li>
                         @if(!empty($serviceCategories))
                         @foreach ($serviceCategories as $serviceCategory)
                             <li>
-                                <a class="dropdown-item {{ (Route::currentRouteName() == 'services.byCategory' && request()->route('slug') == $serviceCategory->slug) ? 'active' : '' }}" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
+                                <a class="dropdown-item {{ request()->routeIs('services.byCategory') && request()->route('slug') == $serviceCategory->slug ? 'active' : '' }}" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
                                     {{ $serviceCategory->title }}
                                 </a>
                             </li>
@@ -165,9 +165,9 @@
                         @endif
                     </ul>
                 </div>        
-                <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact.index' ? 'active' : '' }}">İLETİŞİM</a>
+                <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ request()->routeIs('contact.index') ? 'active' : '' }}">İLETİŞİM</a>
                 <!-- Mobil İçin Referanslar Butonu / Sadece mobilde görünür -->
-                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none {{ Route::currentRouteName() == 'references.index' ? 'active' : 'text-primary' }} fw-bold">REFERANSLARIMIZ</a>
+                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none {{ request()->routeIs('references.index') ? 'active' : 'text-primary' }} fw-bold">REFERANSLARIMIZ</a>
             </div>
             <!-- Masaüstü İçin Referanslar Butonu / Sadece geniş ekranda görünür -->
             <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
