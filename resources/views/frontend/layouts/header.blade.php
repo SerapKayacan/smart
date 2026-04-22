@@ -166,8 +166,7 @@
                     </ul>
                 </div>        
                 <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ request()->routeIs('contact.index') ? 'active' : '' }}">İLETİŞİM</a>
-                <!-- Mobil İçin Referanslar Butonu / Sadece mobilde görünür -->
-                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none {{ request()->routeIs('references.index') ? 'active' : 'text-primary' }} fw-bold">REFERANSLARIMIZ</a>
+                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none {{ request()->routeIs('references.index') ? 'active' : '' }}">REFERANSLARIMIZ</a>
             </div>
             <!-- Masaüstü İçin Referanslar Butonu / Sadece geniş ekranda görünür -->
             <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
