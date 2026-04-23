@@ -108,7 +108,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <img src="{{ asset('assets/frontend/img/about-us2.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Güvenlik Hizmetleri">
+                    <img src="{{ asset('assets/frontend/img/about-us2.webp') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Güvenlik Hizmetleri">
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="order: 2; order-lg: 1;">
-                    <img src="{{ asset('assets/frontend/img/about-us.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Temizlik Hizmetleri">
+                    <img src="{{ asset('assets/frontend/img/about-us.webp') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Temizlik Hizmetleri">
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" style="order: 1; order-lg: 2;">
                     <div class="h6 text-uppercase mb-2" style="color:#D81324; letter-spacing:2px;">// Temizlik Hizmetleri //</div>

@@ -107,7 +107,7 @@
                         <div class="row g-2 h-100">
                             <div class="col-6">
                                 <div class="position-relative h-100">
-                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" alt="Güvenlik Hizmetleri">
+                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us2.webp') }}" alt="Güvenlik Hizmetleri">
                                     <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center about-img-caption-blue">
                                         <span class="text-white fw-bold about-img-caption-text">GÜVENLİK</span>
                                     </div>
@@ -115,7 +115,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="position-relative h-100">
-                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us.jpg') }}" alt="Temizlik Hizmetleri">
+                                    <img class="img-fluid w-100 h-100 about-img-item" src="{{ asset('assets/frontend/img/about-us.webp') }}" alt="Temizlik Hizmetleri">
                                     <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center about-img-caption-red">
                                         <span class="text-white fw-bold about-img-caption-text">TEMİZLİK</span>
                                     </div>

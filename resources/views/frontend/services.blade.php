@@ -2,13 +2,7 @@
 @section('content')
 
     <!-- Page Header Start -->
-    <div class="container-fluid mb-5 position-relative overflow-hidden" style="height:320px;">
-        <!-- Background image -->
-        <img src="{{ asset('assets/frontend/img/services-page.jpeg') }}"
-                 class="position-absolute top-0 start-0 w-100 h-100" style="object-fit:cover;">
-        <!-- Overlay -->
-        <div class="position-absolute top-0 start-0 w-100 h-100" style="background:linear-gradient(135deg,rgba(11,33,84,0.88),rgba(26,58,122,0.75));"></div>
-        <!-- Content -->
+      <div class="container-fluid py-5 mb-5" style="background: linear-gradient(135deg, #0B2154, #1a3a7a);">
         <div class="position-relative h-100 d-flex align-items-center justify-content-center">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <div class="h6 text-white text-uppercase mb-3" style="letter-spacing:2px;">// Hizmetlerimiz //</div>

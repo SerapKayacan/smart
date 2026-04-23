@@ -74,7 +74,7 @@
             </svg>
             <!-- Logo -->
             <div class="rounded-circle overflow-hidden d-flex align-items-center justify-content-center" style="width:130px;height:130px;background:#0b1a3a;border:1px solid rgba(216,19,36,0.25);">
-                <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="Smart Grup" style="width:110px;height:110px;object-fit:contain;">
+                <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="Smart Grup" style="width:110px;height:110px;object-fit:contain;">
             </div>
         </div>
 
@@ -135,7 +135,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{{ route('home') }}" class="navbar-brand d-flex px-3 px-lg-3 ms-2 ">
-            <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="Smart Group Logo" class="img-fluid w-auto mt-2" height="120">
+            <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="Smart Group Logo" class="img-fluid w-auto mt-2" height="120">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
