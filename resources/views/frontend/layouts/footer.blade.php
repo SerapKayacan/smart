@@ -8,10 +8,10 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0212 474 20 35</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>bilgi@smartozelguvenlik.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href="https://wa.me/905322053434"><i class="fab fa-whatsapp"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/smartgrup34?igsh=MXNqeXZ2bHE4dTh5eA=="><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://wa.me/905322053434" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/smartgrup34?igsh=MXNqeXZ2bHE4dTh5eA==" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 @if(isset($serviceCategories))
@@ -53,7 +53,7 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="Başa Dön"><i class="bi bi-arrow-up" aria-hidden="true"></i></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

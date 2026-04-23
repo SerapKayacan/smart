@@ -45,12 +45,12 @@
         </div>
 
         <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev" aria-label="Önceki Slayt">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next" aria-label="Sonraki Slayt">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
 
     </div>
@@ -191,8 +191,8 @@
                 </div>
 
                 <div class="post-actions">
-                  <a class="post-like" href="{{ route('services-detail.show', ['slug' => $service->slug]) }}">
-                    <i class="fas fa-arrow-right"></i>
+                  <a class="post-like" href="{{ route('services-detail.show', ['slug' => $service->slug]) }}" aria-label="{{ $service->title }} detaylarını gör">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
