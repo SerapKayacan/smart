@@ -51,11 +51,20 @@
                                 </div>
 
                                 <div class="mb-10 row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label class="required form-label">Referans Adı</label>
                                         <input class="form-control" name="name" value="{{ old('name') }}" required>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label class="required form-label">Kategori</label>
+                                        <select name="category" class="form-control" required>
+                                            <option value="">Seçiniz</option>
+                                            @foreach($categories as $key => $val)
+                                                <option value="{{ $key }}" {{ old('category') == $key ? 'selected' : '' }}>{{ $val }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label class="form-label">Konum</label>
                                         <input class="form-control" name="location" value="{{ old('location') }}" placeholder="Örn: Bakırköy, İstanbul">
                                     </div>
