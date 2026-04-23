@@ -1,4 +1,6 @@
 @include('frontend.layouts.header')
-@yield('content')
+<main id="main">
+    @yield('content')
+</main>
 @include('frontend.layouts.footer')
 

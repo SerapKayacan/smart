@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h6 class="text-primary text-uppercase">// Hakkımızda //</h6>
+                    <div class="h6 text-primary text-uppercase">// Hakkımızda //</div>
                     <h1 class="mb-4"><span class="text-primary">Smart Grup</span> Güvenlik ve Temizlik Hizmetlerinde Doğru Adres</h1>
                     <p class="mb-4">11 yılı aşkın deneyimimizle güvenlik ve temizlik sektöründe güvenilir çözümler sunuyoruz. Uzman kadromuz ve modern ekipmanlarımızla müşterilerimize en yüksek kalitede hizmet vermeyi taahhüt ediyoruz.</p>
                     <div class="row g-4 mb-3 pb-3">
@@ -139,7 +139,7 @@
                                     <span class="fw-bold text-secondary">01</span>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>Profesyonel ve Uzman Ekip</h6>
+                                    <div class="h6">Profesyonel ve Uzman Ekip</div>
                                     <span>Alanında uzman, sertifikalı personelimizle güvenilir hizmet sunuyoruz.</span>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                     <span class="fw-bold text-secondary">02</span>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>Kalite Odaklı Hizmet Anlayışı</h6>
+                                    <div class="h6">Kalite Odaklı Hizmet Anlayışı</div>
                                     <span>Her projede en yüksek kalite standartlarını uyguluyoruz.</span>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                                     <span class="fw-bold text-secondary">03</span>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>Ödüllü ve Güvenilir Firma</h6>
+                                    <div class="h6">Ödüllü ve Güvenilir Firma</div>
                                     <span>Sektörde kazandığımız ödüller ve referanslarla fark yaratıyoruz.</span>
                                 </div>
                             </div>

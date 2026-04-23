@@ -4,7 +4,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-primary text-uppercase">// İletişim //</h6>
+                <div class="h6 text-primary text-uppercase">// İletişim //</div>
                 <h1 class="mb-5">Her Konuda Bize Ulaşın</h1>
             </div>
             <div class="row g-4">
@@ -90,7 +90,7 @@
     <div class="container-xxl py-5 mt-5 bg-light" style="border-radius: 20px;">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-primary text-uppercase">// Kariyer //</h6>
+                <div class="h6 text-primary text-uppercase">// Kariyer //</div>
                 <h1 class="mb-5">İnsan Kaynakları Başvurusu</h1>
             </div>
             <div class="row g-4 justify-content-center">

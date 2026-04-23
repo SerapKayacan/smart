@@ -5,7 +5,7 @@
     <div class="container-fluid py-5 mb-5" style="background: linear-gradient(135deg, #0B2154, #1a3a7a);">
         <div class="container py-3">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-white text-uppercase mb-3">// Referanslarımız //</h6>
+                <div class="h6 text-white text-uppercase mb-3">// Referanslarımız //</div>
                 <h1 class="text-white mb-2">Tamamladığımız İşler</h1>
                 <p class="text-white-50 mb-0">Yıllar İçinde Gerçekleştirdiğimiz Projeler Ve Güvendiğimiz Kurumlar</p>
             </div>
@@ -74,7 +74,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
-                <h6 class="text-primary text-uppercase mb-2" style="letter-spacing:2px;">// Çalıştığımız Kurumlar //</h6>
+                <div class="h6 text-primary text-uppercase mb-2" style="letter-spacing:2px;">// Çalıştığımız Kurumlar //</div>
                 <h2 class="mb-0">Bize Güvenen Markalar</h2>
             </div>
             <div class="row g-4 align-items-center justify-content-center wow fadeInUp" data-wow-delay="0.2s">

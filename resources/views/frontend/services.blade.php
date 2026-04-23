@@ -11,7 +11,7 @@
         <!-- Content -->
         <div class="position-relative h-100 d-flex align-items-center justify-content-center">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-white text-uppercase mb-3" style="letter-spacing:2px;">// Hizmetlerimiz //</h6>
+                <div class="h6 text-white text-uppercase mb-3" style="letter-spacing:2px;">// Hizmetlerimiz //</div>
                 <h1 class="text-white mb-2">{{ $serviceCategory->title }}</h1>
                 <p class="text-white-50 mb-0">{{ strip_tags($serviceCategory->description) }}</p>
             </div>

@@ -5,7 +5,7 @@
     <div class="container-fluid bg-primary py-5 mb-5" style="background: linear-gradient(135deg, #0B2154, #1a3a7a) !important;">
         <div class="container py-3">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-white text-uppercase mb-3">// Hakkımızda //</h6>
+                <div class="h6 text-white text-uppercase mb-3">// Hakkımızda //</div>
                 <h1 class="text-white mb-0">Smart Grup Kimdir?</h1>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <h6 class="text-primary text-uppercase">// Genel Tanıtım //</h6>
+                    <div class="h6 text-primary text-uppercase">// Genel Tanıtım //</div>
                     <h2 class="mb-4">Smart Grup Hakkında</h2>
                     <p class="mb-4">Smart Grup olarak 2013 yılından bu yana güvenlik ve temizlik sektöründe faaliyet göstermekteyiz. İstanbul merkezli şirketimiz, kurumsal ve bireysel müşterilerimize profesyonel, güvenilir ve kaliteli hizmet sunmayı ilke edinmiştir. Uzman kadromuz ve modern ekipmanlarımızla sektörde fark yaratmaya devam ediyoruz.</p>
                     <div class="d-flex gap-4">
@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="text-uppercase mb-2" style="color:#0B2154; letter-spacing:2px;">// Güvenlik Hizmetleri //</h6>
+                    <div class="h6 text-uppercase mb-2" style="color:#0B2154; letter-spacing:2px;">// Güvenlik Hizmetleri //</div>
                     <h2 class="mb-4">Profesyonel Özel Güvenlik</h2>
                     <p class="mb-4">Smart Grup Güvenlik birimi olarak; site, AVM, fabrika, şantiye, eğitim kurumları ve otel gibi farklı sektörlere özel güvenlik çözümleri sunuyoruz. Tüm personelimiz Özel Güvenlik Kimlik Kartı'na sahip, eğitimli ve deneyimli bireylerden oluşmaktadır.</p>
                     <div class="row g-3 mb-4">
@@ -75,7 +75,7 @@
                                     <i class="fa fa-shield-alt text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">Sertifikalı Güvenlik Personeli</h6>
+                                    <div class="h6 mb-1">Sertifikalı Güvenlik Personeli</div>
                                     <span class="text-muted small">Tüm personelimiz yasal zorunlulukları karşılayan sertifikalara sahiptir.</span>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                     <i class="fa fa-clock text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">7/24 Kesintisiz Hizmet</h6>
+                                    <div class="h6 mb-1">7/24 Kesintisiz Hizmet</div>
                                     <span class="text-muted small">Gece gündüz kesintisiz güvenlik hizmeti ile tesislerinizi koruyoruz.</span>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                     <i class="fa fa-building text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">Geniş Hizmet Yelpazesi</h6>
+                                    <div class="h6 mb-1">Geniş Hizmet Yelpazesi</div>
                                     <span class="text-muted small">Site, AVM, fabrika, şantiye, okul ve otel güvenliği alanlarında hizmet veriyoruz.</span>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                     <img src="{{ asset('assets/frontend/img/about-us.jpg') }}" class="img-fluid rounded" style="object-fit:cover; max-height:420px; width:100%;" alt="Temizlik Hizmetleri">
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" style="order: 1; order-lg: 2;">
-                    <h6 class="text-uppercase mb-2" style="color:#D81324; letter-spacing:2px;">// Temizlik Hizmetleri //</h6>
+                    <div class="h6 text-uppercase mb-2" style="color:#D81324; letter-spacing:2px;">// Temizlik Hizmetleri //</div>
                     <h2 class="mb-4">Profesyonel Temizlik Çözümleri</h2>
                     <p class="mb-4">Smart Grup Temizlik birimi olarak; AVM, otel, hastane ve kurumsal alanlara yönelik kapsamlı temizlik hizmetleri sunuyoruz. Çevre dostu ürünler ve modern ekipmanlarla hijyenik, düzenli ve sağlıklı ortamlar oluşturuyoruz.</p>
                     <div class="row g-3 mb-4">
@@ -133,7 +133,7 @@
                                     <i class="fa fa-broom text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">Uzman Temizlik Ekibi</h6>
+                                    <div class="h6 mb-1">Uzman Temizlik Ekibi</div>
                                     <span class="text-muted small">Eğitimli ve deneyimli personelimizle profesyonel temizlik hizmeti sunuyoruz.</span>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                     <i class="fa fa-leaf text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">Çevre Dostu Ürünler</h6>
+                                    <div class="h6 mb-1">Çevre Dostu Ürünler</div>
                                     <span class="text-muted small">İnsan ve çevre sağlığına duyarlı, sertifikalı temizlik ürünleri kullanıyoruz.</span>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                     <i class="fa fa-hotel text-white"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-1">Geniş Hizmet Kapsamı</h6>
+                                    <div class="h6 mb-1">Geniş Hizmet Kapsamı</div>
                                     <span class="text-muted small">Kat hizmetleri, steward, garson ve bulaşıkhane hizmetleri de sunuyoruz.</span>
                                 </div>
                             </div>

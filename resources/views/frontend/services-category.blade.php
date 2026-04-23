@@ -5,7 +5,7 @@
     <div class="container-fluid py-5 mb-5" style="background: linear-gradient(135deg, #0B2154, #1a3a7a);">
         <div class="container py-3">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-white text-uppercase mb-3">// Kurumsal Hizmetlerimiz //</h6>
+                <div class="h6 text-white text-uppercase mb-3">// Kurumsal Hizmetlerimiz //</div>
                 <h1 class="text-white mb-2">Güvenlik & Temizlik Çözümleri</h1>
                 <p class="text-white-50 mb-0">İhtiyacınıza yönelik en profesyonel hizmet seçeneklerini keşfedin</p>
             </div>

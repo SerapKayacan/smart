@@ -96,6 +96,9 @@
 .custom-slider-section .swiper-pagination-bullet,
 .custom-slider-section .swiper-pagination-bullet-active {
   background: #D81324;
+  width: 16px;
+  height: 16px;
+  margin: 0 10px !important;
 }
 
 .custom-slider-section .swiper-pagination {

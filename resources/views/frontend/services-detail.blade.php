@@ -8,7 +8,7 @@
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background:linear-gradient(135deg,rgba(11,33,84,0.9),rgba(26,58,122,0.8));"></div>
         <div class="position-relative h-100 d-flex align-items-center justify-content-center">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-white text-uppercase mb-3 fw-bold" style="letter-spacing:2px;">// Hizmet Detayı //</h6>
+                <div class="h6 text-white text-uppercase mb-3 fw-bold" style="letter-spacing:2px;">// Hizmet Detayı //</div>
                 <h1 class="text-white mb-0 fw-bolder" style="font-size: 3.5rem;">{{ $service->title }}</h1>
             </div>
         </div>
