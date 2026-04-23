@@ -126,7 +126,7 @@
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href="https://wa.me/905322053434"><i class="fab fa-whatsapp"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/smartgrup34?igsh=MXNqeXZ2bHE4dTh5eA=="><i class="fab fa-instagram"></i></a>
                 </div>
