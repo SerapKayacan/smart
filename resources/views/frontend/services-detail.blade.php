@@ -66,7 +66,7 @@
                             </div>
                         </a>
 
-                        <a href="https://wa.me/902124742035?text={{ urlencode($service->title . ' hizmeti hakkında bilgi almak istiyorum.') }}"
+                        <a href="https://wa.me/905496165080?text={{ urlencode($service->title . ' hizmeti hakkında bilgi almak istiyorum.') }}"
                            target="_blank"
                            class="d-flex align-items-center gap-4 text-dark text-decoration-none mb-5 hover-primary transition">
                             <div class="d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm"

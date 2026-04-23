@@ -8,10 +8,10 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0212 474 20 35</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>bilgi@smartozelguvenlik.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://wa.me/905322053434"><i class="fab fa-whatsapp"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/smartgrup34?igsh=MXNqeXZ2bHE4dTh5eA=="><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 @if(isset($serviceCategories))
