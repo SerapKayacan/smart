@@ -10,7 +10,7 @@
 
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/frontend/img/favicon.png') }}" rel="icon" type="image/png">
+    <link href="{{ asset('assets/frontend/img/favicon.webp') }}" rel="icon" type="image/png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
