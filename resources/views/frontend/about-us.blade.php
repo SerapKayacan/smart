@@ -20,7 +20,7 @@
                     <div class="row g-2">
                         <div class="col-6">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us2.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Güvenlik">
+                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us2.webp') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Güvenlik">
                                 <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(11,33,84,0.8);border-radius:0 0 8px 8px;">
                                     <span class="text-white fw-bold" style="letter-spacing:1px;">GÜVENLİK</span>
                                 </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-6">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us.jpg') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Temizlik">
+                                <img class="img-fluid w-100" src="{{ asset('assets/frontend/img/about-us.webp') }}" style="object-fit:cover; height:220px; border-radius:8px;" alt="Temizlik">
                                 <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center" style="background:rgba(216,19,36,0.8);border-radius:0 0 8px 8px;">
                                     <span class="text-white fw-bold" style="letter-spacing:1px;">TEMİZLİK</span>
                                 </div>
