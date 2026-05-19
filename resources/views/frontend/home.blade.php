@@ -11,7 +11,7 @@
                     <img class="w-100" 
                          src="{{ $carousel->getFirstMediaUrl('banner') }}" 
                          alt="Image">
-
+{{-- 
                     <div class="carousel-caption d-flex align-items-center">
                         <div class="container">
                             <div class="row align-items-center justify-content-center justify-content-lg-start">
@@ -21,7 +21,7 @@
                                         {!! $carousel->title !!}
                                     </h1>
   <p>{!! $carousel->description !!}</p>
-    {{-- 
+    
                                     @if($carousel->button_text)
                                         <a href="{{ $carousel->button_link ?? '#' }}" 
                                            class="btn btn-primary py-3 px-5 animated slideInDown">
@@ -35,12 +35,12 @@
                                     <img class="img-fluid" 
                                          src="{{ $carousel->getFirstMediaUrl('banner') }}" 
                                          alt="">
-                                </div> --}}
+                               
 
                             </div>
                         </div>
                     </div>
-
+ </div> --}}
                 </div>
             @endforeach
         </div>
