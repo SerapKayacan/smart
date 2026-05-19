@@ -66,12 +66,12 @@
         </div>
         <div class="row g-4">
             @if(isset($serviceCategories) && count($serviceCategories) > 0)
-                @foreach($serviceCategories->take(2) as $index => $category)
+              @foreach ($serviceCategories as $index => $category)
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
                     <div class="row g-0 bg-light rounded overflow-hidden flex-md-row flex-column h-100 shadow-sm">
                         <div class="col-md-5">
                             <img class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 200px;" 
-                                 src="{{ $category->getFirstMediaUrl('image', 'medium') ?: asset('assets/frontend/img/about-us' . ($index == 0 ? '2' : '') . '.webp') }}" 
+                                 src="{{ $category->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us' . ($index % 2 == 0 ? '2' : '') . '.webp') }}" 
                                  alt="{{ $category->title }}">
                         </div>
                         <div class="col-md-7 d-flex flex-column justify-content-center p-4">
