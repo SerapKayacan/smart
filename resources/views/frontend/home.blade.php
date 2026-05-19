@@ -21,6 +21,7 @@
                                         {!! $carousel->title !!}
                                     </h1>
   <p>{!! $carousel->description !!}</p>
+    {{-- 
                                     @if($carousel->button_text)
                                         <a href="{{ $carousel->button_link ?? '#' }}" 
                                            class="btn btn-primary py-3 px-5 animated slideInDown">
@@ -30,7 +31,7 @@
                                     @endif
                                 </div>
 
-                               {{--  <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
+                              <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" 
                                          src="{{ $carousel->getFirstMediaUrl('banner') }}" 
                                          alt="">
@@ -56,6 +57,38 @@
     </div>
 </div>
     <!-- Carousel End -->
+
+<!-- Categories Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="h4 text-primary text-uppercase">HİZMET ALANLARIMIZ </div>
+        </div>
+        <div class="row g-4">
+            @if(isset($serviceCategories) && count($serviceCategories) > 0)
+                @foreach($serviceCategories->take(2) as $index => $category)
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="row g-0 bg-light rounded overflow-hidden flex-md-row flex-column h-100 shadow-sm">
+                        <div class="col-md-5">
+                            <img class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 200px;" 
+                                 src="{{ $category->getFirstMediaUrl('image', 'medium') ?: asset('assets/frontend/img/about-us' . ($index == 0 ? '2' : '') . '.webp') }}" 
+                                 alt="{{ $category->title }}">
+                        </div>
+                        <div class="col-md-7 d-flex flex-column justify-content-center p-4">
+                            <h3 class="mb-3">{{ $category->title }}</h3>
+                            <p class="mb-4">{{ Str::limit(strip_tags($category->description ?? 'Kurumsal ihtiyaçlarınıza özel profesyonel çözümler için hizmetlerimizi inceleyin.'), 100) }}</p>
+                            <a class="text-primary fw-bold" href="{{ route('services.byCategory', ['slug' => $category->slug]) }}">
+                                Hizmetlere Git <i class="fa fa-long-arrow-alt-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</div>
+<!-- Categories End -->
 
 
     <!-- Service Start -->
@@ -121,10 +154,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5 about-experience-box">
-                            <h1 class="display-4 text-white mb-0">11 <span class="fs-4">Yıl</span></h1>
-                            <h4 class="text-white">Deneyim</h4>
                         </div>
                     </div>
                 </div>
@@ -210,22 +239,22 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
                     <i class="fa fa-check fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">11</h2>
+                    <h2 class="text-white mb-2"><span data-toggle="counter-up">11</span><span style="font-size: 0.7em;" class="ms-1 fw-bold">+</span></h2>
                     <p class="text-white mb-0">Yıllık Deneyim</p>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
                     <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">1000</h2>
+                    <h2 class="text-white mb-2"><span data-toggle="counter-up">1000</span><span style="font-size: 0.7em;" class="ms-1 fw-bold">+</span></h2>
                     <p class="text-white mb-0">Uzman Personel</p>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
                     <i class="fa fa-users fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">500</h2>
+                    <h2 class="text-white mb-2"><span data-toggle="counter-up">5000</span><span style="font-size: 0.7em;" class="ms-1 fw-bold">+</span></h2>
                     <p class="text-white mb-0">Memnun Müşteri</p>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
                     <i class="fa fa-building fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">300</h2>
+                    <h2 class="text-white mb-2"><span data-toggle="counter-up">3000</span><span style="font-size: 0.7em;" class="ms-1 fw-bold">+</span></h2>
                     <p class="text-white mb-0">Tamamlanan Proje</p>
                 </div>
             </div>
