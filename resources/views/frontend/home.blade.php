@@ -1,14 +1,14 @@
 @extends('frontend.layouts.master')
 @section('content')
     <!-- Carousel Start -->
-<div class="container-fluid p-0 mb-5">
+<div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner">
             @foreach ($carousels as $index => $carousel)
                 <div class="carousel-item @if($index == 0) active @endif">
                     
-                    <img class="w-100" 
+                    <img class="w-100" style="max-height: 80vh; object-fit: cover;"
                          src="{{ $carousel->getFirstMediaUrl('banner') }}" 
                          alt="Image">
 {{-- 
@@ -59,31 +59,38 @@
     <!-- Carousel End -->
 
 <!-- Categories Start -->
-<div class="container-xxl py-5">
+<style>
+    .categories-overlap {
+        position: relative;
+        z-index: 10;
+        margin-top: -60px;
+        margin-bottom: 2rem;
+    }
+    @media (min-width: 992px) {
+        .categories-overlap {
+            margin-top: -120px;
+        }
+    }
+</style>
+<div class="container-fluid categories-overlap">
     <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <div class="h4 text-primary text-uppercase">HİZMET ALANLARIMIZ </div>
-        </div>
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             @if(isset($serviceCategories) && count($serviceCategories) > 0)
               @foreach ($serviceCategories as $index => $category)
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
-                    <div class="row g-0 bg-light rounded overflow-hidden flex-md-row flex-column h-100 shadow-sm">
-                        <div class="col-md-5">
-                            <img class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 200px;" 
-                                 src="{{ $category->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us' . ($index % 2 == 0 ? '2' : '') . '.webp') }}" 
-                                 alt="{{ $category->title }}">
-                        </div>
-                        <div class="col-md-7 d-flex flex-column justify-content-center p-4">
-                            <h3 class="mb-3">{{ $category->title }}</h3>
-                            <p class="mb-4">{{ Str::limit(strip_tags($category->description ?? 'Kurumsal ihtiyaçlarınıza özel profesyonel çözümler için hizmetlerimizi inceleyin.'), 100) }}</p>
-                            <a class="text-primary fw-bold" href="{{ route('services.byCategory', ['slug' => $category->slug]) }}">
-                                Hizmetlere Git <i class="fa fa-long-arrow-alt-right ms-2"></i>
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="bg-white rounded shadow d-flex align-items-center p-2" style="min-height: 100px; transition: 0.3s; cursor: pointer;" onmouseover="this.classList.add('shadow-lg')" onmouseout="this.classList.remove('shadow-lg')" onclick="window.location.href='{{ route('services.byCategory', ['slug' => $category->slug]) }}'">
+                        <img class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;" 
+                             src="{{ $category->getFirstMediaUrl('banner', 'large') ?: asset('assets/frontend/img/about-us' . ($index % 2 == 0 ? '2' : '') . '.webp') }}" 
+                             alt="{{ $category->title }}">
+                        <div class="ms-2">
+                            <h4 class="mb-2 fs-5">{{ $category->title }}</h4>
+                            <a class="text-primary text-uppercase fw-bold" href="{{ route('services.byCategory', ['slug' => $category->slug]) }}">
+                                Hizmetleri İncele <i class="fa fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                @endforeach
+              @endforeach
             @endif
         </div>
     </div>
