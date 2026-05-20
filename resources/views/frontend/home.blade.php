@@ -63,12 +63,12 @@
     .categories-overlap {
         position: relative;
         z-index: 10;
-        margin-top: -60px;
+        margin-top: -45px;
         margin-bottom: 2rem;
     }
     @media (min-width: 992px) {
         .categories-overlap {
-            margin-top: -120px;
+            margin-top: -95px;
         }
     }
 </style>
