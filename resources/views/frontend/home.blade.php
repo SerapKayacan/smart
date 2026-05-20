@@ -85,7 +85,7 @@
                         <div class="ms-2">
                             <h4 class="mb-2 fs-5">{{ $category->title }}</h4>
                             <a class="text-primary text-uppercase fw-bold" href="{{ route('services.byCategory', ['slug' => $category->slug]) }}">
-                                Hizmetleri İncele <i class="fa fa-arrow-right ms-1"></i>
+                                HİZMETLERİ İNCELE <i class="fa fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
